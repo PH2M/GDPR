@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * PH2M_Gdpr
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   Gdpr
+ * @copyright  Copyright (c) 2018 PH2M SARL
+ * @author     PH2M SARL <contact@ph2m.com> : http://www.ph2m.com/
+ *
+ */
+-->
+<config>
+    <sections>
+        <phgdpr translate="label">
+            <label>GDPR</label>
+            <tab>general</tab>
+            <sort_order>10000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <status translate="label">
+                    <label>Status</label>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>1</expanded>
+                    <fields>
+                        <status translate="label comment">
+                            <label>Status</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>phgdpr/adminhtml_system_config_gdpr_status</frontend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </status>
+                    </fields>
+                </status>
+                <fonctionality translate="label">
+                    <label>Functionality</label>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>1</expanded>
+                    <fields>
+                        <password_format_validation translate="label comment">
+                            <label>Enable password gdpr format validation</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </password_format_validation>
+                        <login_limit_attempts translate="label comment">
+                            <label>Enable login limit attemps</label>
+                            <comment>limit login attempts to 5 in 30 seconds</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </login_limit_attempts>
+                    </fields>
+                </fonctionality>
+                <valid_rules>
+                    <label>Valid rules</label>
+                    <sort_order>100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>0</expanded>
+                    <fields>
+                        <customer_complex_password translate="label comment">
+                            <label>Customer complex password</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>phgdpr/system_config_source_rulesvalidity</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </customer_complex_password>
+                        <customer_password_reset translate="label comment">
+                            <label>Customer password reset</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>phgdpr/system_config_source_rulesvalidity</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </customer_password_reset>
+                        <customer_login_limit_attempts translate="label comment">
+                            <label>Customer multi login attempts limit</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>phgdpr/system_config_source_rulesvalidity</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </customer_login_limit_attempts>
+                        <customer_download_own_information translate="label comment">
+                            <label>Customer download own information</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>phgdpr/system_config_source_rulesvalidity</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </customer_download_own_information>
+                        <customer_data_remove translate="label comment">
+                            <label>Customer data remove information</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>phgdpr/system_config_source_rulesvalidity</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </customer_data_remove>
+                        <newsletter_double_optin translate="label comment">
+                            <label>Newlsetter double optin</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>phgdpr/system_config_source_rulesvalidity</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </newsletter_double_optin>
+                    </fields>
+                </valid_rules>
+                <customer_data_remove>
+                    <label>Customer data [REMOVE]</label>
+                    <sort_order>100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>0</expanded>
+                    <fields>
+                        <enable translate="label comment">
+                            <label>Enable customer data remove</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable>
+                        <enable_password_confirmation_for_delete translate="label comment">
+                            <label>Enable password confirmation before delete account</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </enable_password_confirmation_for_delete>
+                        <remove_action_in_queue translate="label comment">
+                            <label>Remove account data with queue system</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </remove_action_in_queue>
+                        <queue_delay translate="label comment">
+                            <label>Delay before remove customer data</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <comment>in seconds</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <remove_action_in_queue>1</remove_action_in_queue>
+                                <enable>1</enable>
+                            </depends>
+                        </queue_delay>
+                        <enable_remove_from_newsletter translate="label comment">
+                            <label>Enable unsubscribe and remove customer from newsletter</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </enable_remove_from_newsletter>
+                        <enable_remove_quotes translate="label comment">
+                            <label>Enable remove customer quotes</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </enable_remove_quotes>
+                        <enable_anonimyse_orders translate="label comment">
+                            <label>Enable anonimyse customer orders</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>300</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </enable_anonimyse_orders>
+                        <enable_remove_customer_account translate="label comment">
+                            <label>Enable remove customer account</label>
+                            <comment>If disable, only lock customer account</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>400</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </enable_remove_customer_account>
+                        <lock_account_message translate="label comment">
+                            <label>Lock account message</label>
+                            <comment>Display when the customer try to log</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>410</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                                <enable_remove_customer_account>0</enable_remove_customer_account>
+                            </depends>
+                        </lock_account_message>
+                        <email_heading translate="label comment">
+                            <label>Email configuration</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>500</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </email_heading>
+                        <confirm_email_template translate="label comment">
+                            <label>Email confirm data delete</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>510</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </confirm_email_template>
+                        <email_sender_identity translate="label comment">
+                            <label>Email sender</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_identity</source_model>
+                            <sort_order>520</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </email_sender_identity>
+                        <message_heading translate="label comment">
+                            <label>Message configuration</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>600</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </message_heading>
+                        <account_delete_success_message translate="label comment">
+                            <label>Account deleted success message</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>610</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                                <remove_action_in_queue>0</remove_action_in_queue>
+                            </depends>
+                        </account_delete_success_message>
+                        <account_delete_queue_pending_message translate="label comment">
+                            <label>Account deleted queue pending message</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>620</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                                <remove_action_in_queue>1</remove_action_in_queue>
+                            </depends>
+                        </account_delete_queue_pending_message>
+                    </fields>
+                </customer_data_remove>
+                <customer_data_download>
+                    <label>Customer data [DOWNLOAD]</label>
+                    <sort_order>200</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>0</expanded>
+                    <fields>
+                        <enable translate="label comment">
+                            <label>Enable customer data download</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable>
+                        <download_action_in_queue translate="label comment">
+                            <label>Download data with queue system</label>
+                            <frontend_type>select</frontend_type>
+                            <comment>
+                                If disable, the customer can download their own information in live, if you have enable queue system,
+                                we generate a file when the process is finish, the customer can download this file on their dashboard
+                                and an email is sent
+                            </comment>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </download_action_in_queue>
+                        <customer_attribute_to_export translate="label comment">
+                            <label>Customer attribute to export</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>phgdpr/system_config_source_customerattributes</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </customer_attribute_to_export>
+                        <enable_customer_download_addresses translate="label comment">
+                            <label>Enable customer addresses to export</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </enable_customer_download_addresses>
+                        <address_attribute_to_export translate="label comment">
+                            <label>Address attributes to export</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>phgdpr/system_config_source_addressattributes</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                                <enable_customer_download_addresses>1</enable_customer_download_addresses>
+                            </depends>
+                        </address_attribute_to_export>
+                        <enable_customer_download_orders translate="label comment">
+                            <label>Enable customer orders to export</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </enable_customer_download_orders>
+                        <order_attribute_to_export translate="label comment">
+                            <label>Order attributes to export</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>phgdpr/system_config_source_orderattributes</source_model>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                                <enable_customer_download_orders>1</enable_customer_download_orders>
+                            </depends>
+                        </order_attribute_to_export>
+                        <email_heading translate="label comment">
+                            <label>Email configuration</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </email_heading>
+                        <email_template translate="label comment">
+                            <label>Email download template</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>210</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </email_template>
+                        <email_sender_identity translate="label comment">
+                            <label>Email sender</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_identity</source_model>
+                            <sort_order>220</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </email_sender_identity>
+                        <message_heading translate="label comment">
+                            <label>Message configuration</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>300</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                                <download_action_in_queue>1</download_action_in_queue>
+                            </depends>
+                        </message_heading>
+                        <queue_processing_message translate="label comment">
+                            <label>Information message for queue processing message</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>310</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                                <download_action_in_queue>1</download_action_in_queue>
+                            </depends>
+                        </queue_processing_message>
+                    </fields>
+                </customer_data_download>
+            </groups>
+        </phgdpr>
+    </sections>
+</config>

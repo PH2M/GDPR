@@ -1,0 +1,36 @@
+<?php
+/**
+ * PH2M_Gdpr
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   Gdpr
+ * @copyright  Copyright (c) 2018 PH2M SARL
+ * @author     PH2M SARL <contact@ph2m.com> : http://www.ph2m.com/
+ *
+ */
+
+?>
+<div class="page-title">
+    <h1><?php echo $this->__('Delete Account') ?></h1>
+</div>
+
+<div>
+    <form action="<?php echo Mage::helper('phgdpr')->getRemoveCustomerAccountUrl() ?>" method="POST">
+        <?php if(Mage::getStoreConfig('phgdpr/customer_data_remove/enable_password_confirmation_for_delete')): ?>
+            <label for="password"><?php echo $this->__('Enter your password for remove your account') ?></label>
+            <input type="password" name="password" id="password" required>
+        <?php endif; ?>
+        <button type="submit" class="button">
+            <span>
+                <?php echo $this->__('Delete your account') ?>
+            </span>
+        </button>
+    </form>
+</div>
+

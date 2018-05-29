@@ -1,0 +1,16 @@
+{
+  "name": "ph2m/gdpr",
+  "description": "Magento 1 GDPR module",
+  "type": "magento-module",
+  "license": "GPL-3.0",
+  "authors": [
+    {
+      "name": "PH2M",
+      "email": "contact@ph2m.com"
+    }
+  ],
+  "suggest": {
+    "magento-hackathon/magento-composer-installer": "Allows to manage this package as a dependency.",
+    "aoepeople/aoe_scheduler": "Required if you use queue system"
+  }
+}

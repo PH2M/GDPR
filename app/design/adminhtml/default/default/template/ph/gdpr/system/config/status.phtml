@@ -1,0 +1,86 @@
+<?php
+/**
+ * Ph2M_PhGdpr
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   PhGdpr
+ * @copyright  Copyright (c) 2018 PH2M SARL
+ * @author     PH2M SARL <contact@ph2m.com> : http://www.ph2m.com/
+ *
+ * @var $this PH2M_Gdpr_Block_Adminhtml_Gdpr_Status
+ */
+
+
+?>
+<div class="gdpr-status">
+    <h2><?php echo $this->__('Customer status') ?></h2>
+    <ul>
+        <li class="<?php echo $this->getCssClass('phgdpr/valid_rules/customer_complex_password') ?>">
+            <?php echo $this->__('Complex password (Cnil)') ?>
+        </li>
+        <li class="<?php echo $this->getCssClass('phgdpr/valid_rules/customer_password_reset') ?>">
+            <?php echo $this->__('Password reset') ?>
+        </li>
+        <li class="<?php echo $this->getCssClass('phgdpr/valid_rules/customer_login_limit_attempts') ?>">
+            <?php echo $this->__('Secure multi try log in') ?>
+        </li>
+        <li class="<?php echo $this->getCssClass('phgdpr/valid_rules/customer_data_remove') ?>">
+            <?php echo $this->__('Remove account request') ?>
+        </li>
+        <li class="<?php echo $this->getCssClass('phgdpr/valid_rules/customer_download_own_information') ?>">
+            <?php echo $this->__('Download own information') ?>
+        </li>
+    </ul>
+    <h2><?php echo $this->__('Newsletter status') ?></h2>
+    <ul>
+        <li class="<?php echo $this->getCssClass('phgdpr/valid_rules/newsletter_double_optin') ?>">
+            <?php echo $this->__('Double optIn') ?>
+        </li>
+    </ul>
+</div>
+<style>
+    .gdpr-status li.good {
+        color: green;
+        position: relative;
+    }
+    .gdpr-status li.good:before {
+        content: "\2713";
+        position: absolute;
+        left:-10px;
+        width:10px;
+        height:10px;
+        font-size:10px;
+    }
+    .gdpr-status li.bad {
+        color: red;
+        position: relative;
+
+    }
+    .gdpr-status li.bad:before {
+        content: "X";
+        position: absolute;
+        left:-10px;
+        width:10px;
+        height:10px;
+        font-size:10px;
+    }
+    .gdpr-status li.wait {
+        color: orange;
+        position: relative;
+
+    }
+    .gdpr-status li.wait:before {
+        content: "?";
+        position: absolute;
+        left:-10px;
+        width:10px;
+        height:10px;
+        font-size:10px;
+    }
+</style>

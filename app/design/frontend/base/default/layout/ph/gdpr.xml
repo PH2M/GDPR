@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * PH2M_Gdpr
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   PhGdpr
+ * @copyright  Copyright (c) 2018 PH2M SARL
+ * @author     PH2M SARL <contact@ph2m.com> : http://www.ph2m.com/
+ *
+ */
+-->
+<layout version="0.1.0">
+   <default>
+       <reference name="head">
+           <action method="addItem" ifconfig="phgdpr/fonctionality/password_format_validation" condition="1">
+               <type>skin_js</type>
+               <file>js/ph/gdpr/password-validation.js</file>
+           </action>
+       </reference>
+   </default>
+    <customer_account>
+        <reference name="customer_account_navigation">
+            <action method="addLink" ifconfig="phgdpr/customer_data_remove/enable_customer_data_remove" condition="1">
+                <name>delete</name>
+                <path>phgdpr/customer/deleteconfirmation</path>
+                <label>Delete Account</label>
+            </action>
+            <action method="addLink" ifconfig="phgdpr/customer_data_download/enable_customer_data_download" condition="1">
+                <name>download</name>
+                <path>phgdpr/customer/downloadview</path>
+                <label>Download Data</label>
+            </action>
+        </reference>
+    </customer_account>
+    <phgdpr_customer_deleteconfirmation>
+        <update handle="customer_account"/>
+        <reference name="content">
+            <block type="core/template" name="account.delete.confirmation" template="ph/gdpr/confirmation.phtml"/>
+            <block type="customer/account_dashboard" name="customer.account.link.back" template="customer/account/link/back.phtml"/>
+        </reference>
+    </phgdpr_customer_deleteconfirmation>
+    <phgdpr_customer_downloadview>
+        <update handle="customer_account"/>
+        <reference name="content">
+            <block type="phgdpr/account_download" name="account.download.request" template="ph/gdpr/download.phtml"/>
+            <block type="customer/account_dashboard" name="customer.account.link.back"
+                   template="customer/account/link/back.phtml"/>
+        </reference>
+    </phgdpr_customer_downloadview>
+
+</layout>
