@@ -266,8 +266,10 @@ class PH2M_Gdpr_Model_Customer_Data_Remove extends Mage_Core_Model_Abstract impl
         $order->setCustomerMiddlename($helper->getRandom());
         $order->setCustomerLastname($helper->getRandom());
         $order->setCustomerEmail($helper->getRandom('email'));
+        $order->setRemoteIp($helper->getRandom('ip'));
         $this->anonymiseSaleAddress($order->getBillingAddress());
         $this->anonymiseSaleAddress($order->getShippingAddress());
+
         try {
             $order->save();
         } catch (Exception $e) {

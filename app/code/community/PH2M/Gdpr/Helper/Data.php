@@ -29,6 +29,8 @@ class PH2M_Gdpr_Helper_Data extends Mage_Core_Helper_Abstract
             $randString = str_repeat('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(1, 10));
             $rand = substr(str_shuffle($randString), 1, 10);
             return $rand.'@example.com';
+        } elseif ($type == 'ip') {
+            return '0.0.0.0';
         }
         return null;
     }
