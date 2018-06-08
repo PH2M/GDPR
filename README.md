@@ -1,4 +1,4 @@
-# WARNING, this module is in development, you can contribute on develop branch but we does not conseil to use this for the moment in production environment
+# WARNING, this module is in development, you can contribute on develop branch but we do not advise you to use this for the moment in production environment
 
 # PH2M GDPR
 
