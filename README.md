@@ -14,7 +14,7 @@ Magento 1 module for respect reform of EU data protection rules (GDPR)
 See RELEASE_NOTES.txt
 
 ## Installation
-Composer :
+Composer : (SOON)
 ```
 composer require ph2m/gdpr
 ```
@@ -50,36 +50,48 @@ Download this module and add 'app' and 'skin' directory to you magento
 
 ## Developer guide
 #### ADD Custom process before / after customer download or remove data
+- Download event:
+```
+request_customer_data_download_before [customer, customer_email]
+```
+call before delete customer data, or add download action in queue
 
 ```
-before_request_delete_customer_data [customer, customer_email]
+request_customer_data_download_after [customer, customer_email]
 ```
-call before delete customer data, or add delete action in queue
+call after delete customer data, or add download action in queue
 
 ```
-after_request_delete_customer_data [customer, customer_email]
+customer_data_download_construct_data_before [customer, fileData]
 ```
-call after delete customer data, or add delete action in queue
+call before construct file data, you can add your custom data on fileData Varien_Object
 
 ```
-before_delete_customer_data [customer, customer_email]
+customer_data_download_construct_data_after [customer, fileData]
 ```
-call just before delete customer data
+call after construct file data, you can update or remove data already in Varien_Object
+
+- Remove event:
 
 ```
-after_delete_customer_data [customer, customer_email]
+request_customer_data_remove_before [customer, customer_email]
 ```
-call just after delete customer data
+call just before delete customer data, or remove action in queue
 
 ```
-before_download_customer_construct_data [customer, fileData]
+request_customer_data_remove_after [customer, customer_email]
 ```
-call before construct customer data file, you can add your custom data on fileData varien_object
+call just after delete customer data, or remove action in queue
 
 ```
-before_download_customer_construct_data [customer, fileData]
+customer_data_remove_action_before [customer, customer_email]
 ```
-call after construct customer data file, you can add, update or remove customer data on fileData varien_object
+call before customer data remove action
+
+```
+customer_data_remove_action_after [customer, customer_email]
+```
+call after customer data remove action
 
 #### ADD Custom process with queue system
 You can add your own custom process thanks to the queue system. for this, follow this step :
