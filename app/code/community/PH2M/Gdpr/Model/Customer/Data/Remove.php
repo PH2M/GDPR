@@ -270,6 +270,12 @@ class PH2M_Gdpr_Model_Customer_Data_Remove extends Mage_Core_Model_Abstract impl
         $this->anonymiseSaleAddress($order->getBillingAddress());
         $this->anonymiseSaleAddress($order->getShippingAddress());
 
+        $paymentInformation = $order->getPayment()->getAdditionalInformation();
+        if (isset($paymentInformation['paypal_payer_email'])) {
+            $paymentInformation['paypal_payer_email'] = $helper->getRandom('email');
+            $order->getPayment()->setAdditionalInformation($paymentInformation);
+        }
+
         try {
             $order->save();
         } catch (Exception $e) {
