@@ -8,7 +8,7 @@
                         <children>
                             <config>
                                 <children>
-                                    <phgdpr translate="title" module="gdpr">
+                                    <phgdpr translate="title" module="phgdpr">
                                         <title>PH2M - GDPR</title>
                                     </phgdpr>
                                 </children>
