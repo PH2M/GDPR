@@ -91,6 +91,7 @@ class PH2M_Gdpr_Model_Customer_Data_Remove extends Mage_Core_Model_Abstract impl
         $this->deleteCustomerNewsletterSubscription($customerEmail);
         $this->deleteCustomerQuotes($customer);
         $this->anonymiseCustomerOrder($customer);
+        $this->anonymiseCustomerProductReviews($customer);
         $this->deleteCustomerAccount($customer);
 
 
@@ -222,6 +223,18 @@ class PH2M_Gdpr_Model_Customer_Data_Remove extends Mage_Core_Model_Abstract impl
     }
 
 
+    protected function anonymiseCustomerProductReviews($customer)
+    {
+        if (!Mage::getStoreConfig('phgdpr/customer_data_remove/enable_anonimyse_customer_product_reviews')) {
+            return false;
+        }
+        $reviews = $this->getCustomerProductReviews($customer);
+        foreach ($reviews as $review) {
+            $this->anonymiseReview($review);
+        }
+        return true;
+    }
+
     /**
      * @param $customer
      * @return Mage_Eav_Model_Entity_Collection_Abstract|Mage_Sales_Model_Resource_Order_Collection
@@ -233,8 +246,21 @@ class PH2M_Gdpr_Model_Customer_Data_Remove extends Mage_Core_Model_Abstract impl
         return $orders;
     }
 
+
     /**
-     * Remove customer details from the address
+     * @param $customer
+     * @return Mage_Review_Model_Resource_Review_Collection
+     */
+    protected function getCustomerProductReviews($customer)
+    {
+        $reviews = Mage::getResourceModel('review/review_collection')
+            ->addCustomerFilter($customer->getId())
+        ;
+        return $reviews;
+    }
+
+    /**
+     * anonymise customer details from the address
      *
      * @param Mage_Sales_Model_Order_Address|Mage_Sales_Model_Quote_Address $address
      */
@@ -255,7 +281,7 @@ class PH2M_Gdpr_Model_Customer_Data_Remove extends Mage_Core_Model_Abstract impl
     }
 
     /**
-     * Remove customer details from a quote or order
+     * Anonymise customer details from a quote or order
      *
      * @param Mage_Sales_Model_Order $order
      */
@@ -278,6 +304,23 @@ class PH2M_Gdpr_Model_Customer_Data_Remove extends Mage_Core_Model_Abstract impl
 
         try {
             $order->save();
+        } catch (Exception $e) {
+            Mage::logException($e);
+            Mage::helper('phgdpr')->log($e->getMessage(), Zend_Log::ERR);
+        }
+    }
+
+    /**
+     * Anonymise customer nickname for her review
+     *
+     * @param Mage_Review_Model_Review $review
+     */
+    protected function anonymiseReview($review)
+    {
+        $review->setNickname(Mage::helper('phgdpr')->__('Anonymous'));
+
+        try {
+            $review->save();
         } catch (Exception $e) {
             Mage::logException($e);
             Mage::helper('phgdpr')->log($e->getMessage(), Zend_Log::ERR);
