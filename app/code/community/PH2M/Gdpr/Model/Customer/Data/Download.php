@@ -258,7 +258,6 @@ class PH2M_Gdpr_Model_Customer_Data_Download extends Mage_Core_Model_Abstract im
         if (!$reviews->getSize()) {
             return false;
         }
-
         $reviewData            = [];
         foreach ($reviews as $review) {
             $reviewData[$review->getId()] = $review->getData();

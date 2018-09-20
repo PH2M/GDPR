@@ -23,7 +23,7 @@ Download this module and add 'app' and 'skin' directory to you magento
 
 ## Feature
 - Full manageable, you can enabled / disabled all functionality from your back-office
-- Download, remove and anonimyse customer data
+- Download, remove and anonymize customer data
     - Live system: customer can directly download or remove their own data from their dashboard
     - Queue system: you can enabled queue system for remove or download customer data if you have heavy treatment
     - Email notification 
@@ -33,16 +33,21 @@ Download this module and add 'app' and 'skin' directory to you magento
 - Check GDPR validity
     - Check if all config for respect GDPR is enabled
     
-- Remove and anonymse customer data:
+- Remove and anonymize customer data:
     - Remove from newsletter (can be disabled)
     - Remove customer account (can be disabled)
     - Remove customer quote (can be disabled)
-    - Anonimyse customer order (can be disabled)
+    - Anonymize customer order (can be disabled)
+    - Anonymise customer product reviews (can be disabled)
 - Download customer data:
     - Download customer account data (you can choose attributes to export or disabled)
     - Download customer addresses data (you can choose attributes to export or disabled)
     - Download customer orders data (you can choose attributes to export or disabled)
-   
+    - Donwload customer product reviews (can be disabled)
+- Manage cookies (with [tarteaucitron.js](https://github.com/AmauriC/tarteaucitron.js))
+    - Display cookies consent banner and popup
+    - Compatible with magento google analytics (can be disabled)
+    
 ## Usage
 - Enable all feature who you want on 'System > Configuration > General > GDPR'
 - Run cron phgdpr_check_rules and check GDPR validity on 'System > Configuration > General > GDPR > Status'

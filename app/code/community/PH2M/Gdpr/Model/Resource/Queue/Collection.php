@@ -15,7 +15,8 @@
  *
  */
  
-class PH2M_Gdpr_Model_Resource_Queue_Collection extends Mage_Core_Model_Resource_Db_Collection_Abstract {
+class PH2M_Gdpr_Model_Resource_Queue_Collection extends Mage_Core_Model_Resource_Db_Collection_Abstract
+{
     
 
     /**

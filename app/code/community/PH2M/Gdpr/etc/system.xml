@@ -54,7 +54,7 @@
                     <expanded>1</expanded>
                     <fields>
                         <password_format_validation translate="label comment">
-                            <label>Enable password gdpr format validation</label>
+                            <label>Enable password GDPR format validation</label>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>10</sort_order>
@@ -217,7 +217,7 @@
                             </depends>
                         </enable_remove_quotes>
                         <enable_anonimyse_orders translate="label comment">
-                            <label>Enable anonimyse customer orders</label>
+                            <label>Enable anonymize customer orders</label>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>300</sort_order>
@@ -229,7 +229,7 @@
                             </depends>
                         </enable_anonimyse_orders>
                         <enable_anonimyse_customer_product_reviews translate="label comment">
-                            <label>Enable anonimyse customer product reviews</label>
+                            <label>Enable anonymize customer product reviews</label>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>350</sort_order>
@@ -242,7 +242,7 @@
                         </enable_anonimyse_customer_product_reviews>
                         <enable_remove_customer_account translate="label comment">
                             <label>Enable remove customer account</label>
-                            <comment>If disable, only lock customer account</comment>
+                            <comment>If disabled, only lock customer account</comment>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>400</sort_order>
@@ -511,6 +511,107 @@
                         </queue_processing_message>
                     </fields>
                 </customer_data_download>
+                <cookies translate="label">
+                    <label>Cookies</label>
+                    <sort_order>300</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable translate="label comment">
+                            <label>Enable cookies management</label>
+                            <frontend_type>select</frontend_type>
+                            <comment>This feature use 'tarteaucitron.js'</comment>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable>
+                        <policy_cms_page translate="label comment">
+                            <label>Policy page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_cms_page</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </policy_cms_page>
+                        <wording_header translate="label comment">
+                            <label>Wording</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </wording_header>
+                        <wording_alert_big_privacy translate="label comment">
+                            <label>Main wording banner</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </wording_alert_big_privacy>
+                        <wording_accept_all translate="label comment">
+                            <label>Wording accept all button</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </wording_accept_all>
+                        <wording_personalize translate="label comment">
+                            <label>Wording personalize button</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </wording_personalize>
+                        <service_header translate="label comment">
+                            <label>Service</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </service_header>
+                        <enable_google_analytics translate="label comment">
+                            <label>Enable Google Analytics service</label>
+                            <frontend_type>select</frontend_type>
+                            <comment>Use tarteaucitron for add GA cookies, only if Sales > Google Api is enabled</comment>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>210</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </enable_google_analytics>
+                    </fields>
+                </cookies>
             </groups>
         </phgdpr>
     </sections>

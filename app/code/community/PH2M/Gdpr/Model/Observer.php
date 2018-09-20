@@ -145,9 +145,7 @@ class PH2M_Gdpr_Model_Observer
     {
         $customer = $observer->getEvent()->getModel();
         if ($customer && $customer->getIsGdprLock()) {
-            throw Mage::exception('Mage_Core', Mage::getStoreConfig('phgdpr/customer_data_remove/lock_account_message'),
-                self::EXCEPTION_ACCOUNT_GDPR_LOCK
-            );
+            throw Mage::exception('Mage_Core', Mage::getStoreConfig('phgdpr/customer_data_remove/lock_account_message'), self::EXCEPTION_ACCOUNT_GDPR_LOCK);
         }
     }
 }

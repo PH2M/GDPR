@@ -90,8 +90,8 @@ class PH2M_Gdpr_Model_Customer_Data_Remove extends Mage_Core_Model_Abstract impl
 
         $this->deleteCustomerNewsletterSubscription($customerEmail);
         $this->deleteCustomerQuotes($customer);
-        $this->anonymiseCustomerOrder($customer);
-        $this->anonymiseCustomerProductReviews($customer);
+        $this->anonymizeCustomerOrder($customer);
+        $this->anonymizeCustomerProductReviews($customer);
         $this->deleteCustomerAccount($customer);
 
 
@@ -210,27 +210,30 @@ class PH2M_Gdpr_Model_Customer_Data_Remove extends Mage_Core_Model_Abstract impl
      * @param Mage_Customer_Model_Customer $customer
      * @return bool
      */
-    protected function anonymiseCustomerOrder($customer)
+    protected function anonymizeCustomerOrder($customer)
     {
         if (!Mage::getStoreConfig('phgdpr/customer_data_remove/enable_anonimyse_orders')) {
             return false;
         }
         $orders = $this->getCustomerOrders($customer);
         foreach ($orders as $order) {
-            $this->anonymiseSaleData($order);
+            $this->anonymizeSaleData($order);
         }
         return true;
     }
 
-
-    protected function anonymiseCustomerProductReviews($customer)
+    /**
+     * @param Mage_Customer_Model_Customer $customer
+     * @return bool
+     */
+    protected function anonymizeCustomerProductReviews($customer)
     {
         if (!Mage::getStoreConfig('phgdpr/customer_data_remove/enable_anonimyse_customer_product_reviews')) {
             return false;
         }
         $reviews = $this->getCustomerProductReviews($customer);
         foreach ($reviews as $review) {
-            $this->anonymiseReview($review);
+            $this->anonymizeReview($review);
         }
         return true;
     }
@@ -260,11 +263,11 @@ class PH2M_Gdpr_Model_Customer_Data_Remove extends Mage_Core_Model_Abstract impl
     }
 
     /**
-     * anonymise customer details from the address
+     * anonymize customer details from the address
      *
      * @param Mage_Sales_Model_Order_Address|Mage_Sales_Model_Quote_Address $address
      */
-    protected function anonymiseSaleAddress($address)
+    protected function anonymizeSaleAddress($address)
     {
         $helper = Mage::helper('phgdpr');
         $address->setFirstname($helper->getRandom());
@@ -281,11 +284,11 @@ class PH2M_Gdpr_Model_Customer_Data_Remove extends Mage_Core_Model_Abstract impl
     }
 
     /**
-     * Anonymise customer details from a quote or order
+     * anonymize customer details from a quote or order
      *
      * @param Mage_Sales_Model_Order $order
      */
-    protected function anonymiseSaleData($order)
+    protected function anonymizeSaleData($order)
     {
         $helper = Mage::helper('phgdpr');
         $order->setCustomerFirstname($helper->getRandom());
@@ -293,8 +296,8 @@ class PH2M_Gdpr_Model_Customer_Data_Remove extends Mage_Core_Model_Abstract impl
         $order->setCustomerLastname($helper->getRandom());
         $order->setCustomerEmail($helper->getRandom('email'));
         $order->setRemoteIp($helper->getRandom('ip'));
-        $this->anonymiseSaleAddress($order->getBillingAddress());
-        $this->anonymiseSaleAddress($order->getShippingAddress());
+        $this->anonymizeSaleAddress($order->getBillingAddress());
+        $this->anonymizeSaleAddress($order->getShippingAddress());
 
         $paymentInformation = $order->getPayment()->getAdditionalInformation();
         if (isset($paymentInformation['paypal_payer_email'])) {
@@ -311,11 +314,11 @@ class PH2M_Gdpr_Model_Customer_Data_Remove extends Mage_Core_Model_Abstract impl
     }
 
     /**
-     * Anonymise customer nickname for her review
+     * anonymize customer nickname for her review
      *
      * @param Mage_Review_Model_Review $review
      */
-    protected function anonymiseReview($review)
+    protected function anonymizeReview($review)
     {
         $review->setNickname(Mage::helper('phgdpr')->__('Anonymous'));
 
