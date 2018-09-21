@@ -23,6 +23,9 @@ class PH2M_Gdpr_Model_Override_Customer_Customer extends Mage_Customer_Model_Cus
      */
     private static $_isConfirmationRequired;
 
+    const DEFAULT_ATTEMPS_NUMBER = 5;
+    const DEFAULT_TIME_BLOCKED = 27000;
+
 
     /**
      * REWRITE : Add gdpr password verification
@@ -90,4 +93,79 @@ class PH2M_Gdpr_Model_Override_Customer_Customer extends Mage_Customer_Model_Cus
         return $errors;
     }
 
+
+    /**
+     * REWRITE : Add limit login attempt
+     *
+     * @param  string $login
+     * @param  string $password
+     * @throws Mage_Core_Exception
+     * @return true
+     *
+     */
+    public function authenticate($login, $password)
+    {
+
+        $this->loadByEmail($login);
+        if ($this->getConfirmation() && $this->isConfirmationRequired()) {
+            throw Mage::exception('Mage_Core',
+                Mage::helper('customer')->__('This account is not confirmed.'),
+                self::EXCEPTION_EMAIL_NOT_CONFIRMED
+            );
+        }
+        if (!$this->validatePassword($password)) {
+            $this->verifyAttempts();
+            throw Mage::exception('Mage_Core', Mage::helper('customer')->__('Invalid login or password.'),
+                self::EXCEPTION_INVALID_EMAIL_OR_PASSWORD
+            );
+        }
+
+        if ($this->verifyAttempts()) {
+            Mage::dispatchEvent('customer_customer_authenticated', array(
+                'model'    => $this,
+                'password' => $password,
+            ));
+            return true;
+        }
+    }
+
+    /**
+     * @return bool
+     *
+     * Verify user connection attempts to limit request
+     */
+    protected function verifyAttempts()
+    {
+
+        if (!Mage::getStoreConfig('phgdpr/fonctionality/login_limit_attempts')) {
+            return false;
+        }
+
+        if (!$numberAttemps = Mage::getStoreConfig('phgdpr/valid_rules/customer_login_attemps_number')) {
+            $numberAttemps = self::DEFAULT_ATTEMPS_NUMBER;
+        }
+
+        if (!$timeBlocked = intval(Mage::getStoreConfig('phgdpr/valid_rules/customer_login_time_blocked'))*60) {
+            $timeBlocked = self::DEFAULT_TIME_BLOCKED;
+        }
+
+        $cookie = Mage::getSingleton('core/cookie');
+
+        $cookieLoginAttemps = $cookie->get('loginattemps');
+        if ($cookieLoginAttemps) {
+            if ($cookieLoginAttemps >= $numberAttemps) {
+                Mage::getSingleton('core/session')->addError(
+                    Mage::helper('core')->__('You tried to log in too many times, try later')
+                );
+            }
+            $cookieLoginAttemps++;
+            $cookie->set('loginattemps', $cookieLoginAttemps, $timeBlocked, '/');
+            return false;
+        }
+        else {
+            $cookie->set('loginattemps', 1, $timeBlocked, '/');
+        }
+
+        return true;
+    }
 }
