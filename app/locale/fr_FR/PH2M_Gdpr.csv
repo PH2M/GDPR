@@ -59,10 +59,16 @@
 "Wording accept all button","Libellé du bouton tout accepter"
 "Wording personalize button","Libellé du bouton personnaliser"
 "Enable Google Analytics service","Activer le service Google Analytics"
+"Attempts number","Nombre de tentative"
+"default value, 5 try","valeur par défault, 5 tentative"
+"Time blocked","Temps de blocage"
+"in minutes, default value 5 minutes","En minutes, valeur par défaut 5 minutes"
 #############
 ### FRONT ###
 #############
 "Your password must contain at least 8 characters.","Votre mot de passe doit contenir au moins 8 caractères."
-"Please enter valid password, without more than 3 options, numeric, lowercase, uppercase, special character","Merci de renseigner un mot de passe valide, avec au moins 3 de ces options, nombres, minuscules, majuscules, caractères spéciaux"
+"Please enter valid password, with 3 or more than options, numeric, lowercase, uppercase, special character","Merci de renseigner un mot de passe valide, avec au moins 3 de ces options, nombres, minuscules, majuscules, caractères spéciaux"
 "Delete my account","Supprimer mon compte"
 "Download my account data","Télécharger mes données"
+"Please enter valid password, with 3 or more than options, numeric, lowercase, uppercase, special character and 8 or more characters.","Veuillez entrer un mot de passe valide, avec 3 options ou plus, numériques, minuscules, majuscules, caractères spéciaux et 8 caractères ou plus."
+"You tried to log in too many times, you can try again after %s minutes","Vous avez essayé de vous connecter un trop grand nombre de fois, vous pouvez réessayer dans %s minutes"

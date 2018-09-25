@@ -18,6 +18,9 @@ class PH2M_Gdpr_Model_Observer
 {
     protected $configModel;
     const EXCEPTION_ACCOUNT_GDPR_LOCK = 20;
+    const DEFAULT_ATTEMPS_NUMBER = 5;
+    const DEFAULT_TIME_BLOCKED = 1;
+
 
     /**
      * Check if all config for respect GDPR is enabled
@@ -87,27 +90,47 @@ class PH2M_Gdpr_Model_Observer
      */
     public function limitLoginAttempts(Varien_Event_Observer $observer)
     {
-        if (!Mage::getStoreConfig('phgdpr/fonctionality/login_limit_attempts')) {
+
+        if (Mage::getStoreConfig('phgdpr/fonctionality/login_limit_attempts') && !$this->verifyAttempts()) {
+            exit($observer->getEvent()->getControllerAction()->getResponse()->setRedirect(Mage::helper('core/http')->getHttpReferer()));
+        }
+
+        return true;
+    }
+
+    /**
+     * Verify user connection attempts to limit request
+     *
+     * @return bool
+     */
+    protected function verifyAttempts()
+    {
+
+        if (!$numberAttempts = Mage::getStoreConfig('phgdpr/fonctionality/customer_login_attempts_number')) {
+            $numberAttempts = self::DEFAULT_ATTEMPS_NUMBER;
+        }
+
+        if (!$timeBlocked = intval(Mage::getStoreConfig('phgdpr/fonctionality/customer_login_time_blocked'))*60) {
+            $timeBlocked = self::DEFAULT_TIME_BLOCKED*60;
+        }
+
+        $cookie = Mage::getSingleton('core/cookie');
+
+        $cookieLoginAttempts = $cookie->get('login_attempts');
+        if ($cookieLoginAttempts) {
+            if ($cookieLoginAttempts >= $numberAttempts) {
+                Mage::getSingleton('core/session')->addError(
+                    Mage::helper('core')->__('You tried to log in too many times, you can try again after %s minutes', ($timeBlocked/60))
+                );
+            }
+            $cookieLoginAttempts++;
+            $cookie->set('login_attempts', $cookieLoginAttempts, $timeBlocked, '/');
             return false;
         }
-
-        $lockTo = Mage::getSingleton('customer/session')->getLockLoginAttemptsTo();
-        if ($lockTo && time() < $lockTo) {
-            if ($loginAttempts = Mage::getSingleton('customer/session')->getLoginAttempts()) {
-                $loginAttempts++;
-            } else {
-                $loginAttempts = 1;
-            }
-            Mage::getSingleton('customer/session')->setLoginAttempts($loginAttempts);
-
-            if ($loginAttempts > 5) {
-                Mage::getSingleton('core/session')->addError(Mage::helper('core')->__('You tried to log in too many times, wait 30 seconds before retry'));
-                exit($observer->getEvent()->getControllerAction()->getResponse()->setRedirect(Mage::helper('core/http')->getHttpReferer()));
-            }
-        } else {
-            Mage::getSingleton('customer/session')->setLockLoginAttemptsTo(time() + 30);
-            Mage::getSingleton('customer/session')->setLoginAttempts(1);
+        else {
+            $cookie->set('login_attempts', 1, $timeBlocked, '/');
         }
+
         return true;
     }
 

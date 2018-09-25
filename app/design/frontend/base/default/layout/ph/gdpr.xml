@@ -19,10 +19,11 @@
 <layout version="0.1.0">
     <default>
         <reference name="head">
-            <action method="addItem" ifconfig="phgdpr/fonctionality/password_format_validation" condition="1">
-                <type>skin_js</type>
-                <file>js/ph/gdpr/password-validation.js</file>
-            </action>
+            <!-- TODO -->
+            <!--<action method="addItem" ifconfig="phgdpr/fonctionality/password_format_validation" condition="1">-->
+                <!--<type>skin_js</type>-->
+                <!--<file>js/ph/gdpr/password-validation.js</file>-->
+            <!--</action>-->
             <action method="addItem" ifconfig="phgdpr/cookies/enable" condition="1">
                 <type>skin_js</type>
                 <file>js/ph/gdpr/tarteaucitron/tarteaucitron.js</file>

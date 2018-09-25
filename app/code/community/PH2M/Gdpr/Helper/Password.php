@@ -44,7 +44,7 @@ class PH2M_Gdpr_Helper_Password
         }
 
         if ($errorCount >= 3) {
-            return Mage::helper('phgdpr')->__('Please enter valid password, without more than 3 options, numeric, lowercase, uppercase, special character');
+            return Mage::helper('phgdpr')->__('Please enter valid password, with 3 or more than options, numeric, lowercase, uppercase, special character');
         }
         return false;
     }
