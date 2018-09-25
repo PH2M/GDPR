@@ -27,8 +27,8 @@ class PH2M_Gdpr_Helper_Password
     public function invalidPasswordFormat($password)
     {
         $errorCount = 0;
-        if (strlen($password) <= '8') {
-            return Mage::helper('phgdpr')->__('Your password must contain at least 8 characters!');
+        if (strlen($password) < '8') {
+            return Mage::helper('phgdpr')->__('Your password must contain at least 8 characters.');
         }
         if (!preg_match("#[0-9]+#", $password)) {
             $errorCount++;

@@ -131,9 +131,9 @@ class PH2M_Gdpr_Model_Override_Customer_Customer extends Mage_Customer_Model_Cus
     }
 
     /**
-     * @return bool
-     *
      * Verify user connection attempts to limit request
+     *
+     * @return bool
      */
     protected function verifyAttempts()
     {

@@ -62,12 +62,12 @@
             <action method="addLink" ifconfig="phgdpr/customer_data_remove/enable" condition="1">
                 <name>delete</name>
                 <path>phgdpr/customer/deleteconfirmation</path>
-                <label>Delete Account</label>
+                <label>Delete my account</label>
             </action>
             <action method="addLink" ifconfig="phgdpr/customer_data_download/enable" condition="1">
                 <name>download</name>
                 <path>phgdpr/customer/downloadview</path>
-                <label>Download Data</label>
+                <label>Download my account data</label>
             </action>
         </reference>
     </customer_account>
