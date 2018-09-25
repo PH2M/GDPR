@@ -19,7 +19,7 @@ class PH2M_Gdpr_Model_Observer
     protected $configModel;
     const EXCEPTION_ACCOUNT_GDPR_LOCK = 20;
     const DEFAULT_ATTEMPS_NUMBER = 5;
-    const DEFAULT_TIME_BLOCKED = 1;
+    const DEFAULT_TIME_BLOCKED = 5;
 
 
     /**

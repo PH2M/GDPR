@@ -1,20 +1,17 @@
-# WARNING, this module is in development, you can contribute on develop branch but we do not advise you to use this for the moment in production environment
-
 # PH2M GDPR
 
-Magento 1 module for respect reform of EU data protection rules (GDPR)
+Free Magento 1 module for respect reform of EU data protection rules (GDPR)
 
 
 ## Requirements
 
 - Only test on Magento 1.9.x (but probably work on magento 1.4.x to 1.9.x)
-- Aoe_Scheduler : https://github.com/AOEpeople/Aoe_Scheduler
 
 ## Changelog 
 See RELEASE_NOTES.txt
 
 ## Installation
-Composer : (SOON)
+Composer :
 ```
 composer require ph2m/gdpr
 ```
@@ -22,28 +19,27 @@ Manual :
 Download this module and add 'app' and 'skin' directory to you magento
 
 ## Feature
-- Full manageable, you can enabled / disabled all functionality from your back-office
+**Full manageable, you can enabled / disabled all functionality from your back-office**
 - Download, remove and anonymize customer data
     - Live system: customer can directly download or remove their own data from their dashboard
-    - Queue system: you can enabled queue system for remove or download customer data if you have heavy treatment
+    - [developer only] Queue system: you can enabled queue system for remove or download customer data if you have heavy treatment 
     - Email notification 
 - Extra features 
-    - Enable complex password for respect CNIL recommendation 
-    - Enable login attempt lock after 5 try
+    - Enable complex password for respect [CNIL recommendation](https://www.cnil.fr/fr/authentification-par-mot-de-passe-les-mesures-de-securite-elementaires) 
+    - Enable login attempt lock multi try
 - Check GDPR validity
     - Check if all config for respect GDPR is enabled
-    
 - Remove and anonymize customer data:
-    - Remove from newsletter (can be disabled)
-    - Remove customer account (can be disabled)
-    - Remove customer quote (can be disabled)
-    - Anonymize customer order (can be disabled)
-    - Anonymise customer product reviews (can be disabled)
+    - Remove from newsletter
+    - Remove customer account
+    - Remove customer quote
+    - Anonymize customer order
+    - Anonymise customer product reviews
 - Download customer data:
-    - Download customer account data (you can choose attributes to export or disabled)
-    - Download customer addresses data (you can choose attributes to export or disabled)
-    - Download customer orders data (you can choose attributes to export or disabled)
-    - Donwload customer product reviews (can be disabled)
+    - Download customer account data (you can choose attributes to export)
+    - Download customer addresses data (you can choose attributes to export)
+    - Download customer orders data (you can choose attributes to export)
+    - Donwload customer product reviews
 - Manage cookies (with [tarteaucitron.js](https://github.com/AmauriC/tarteaucitron.js))
     - Display cookies consent banner and popup
     - Compatible with magento google analytics (can be disabled)
