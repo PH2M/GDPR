@@ -15,7 +15,8 @@
  *
  */
 
-class PH2M_Gdpr_Model_Override_Customer_Customer extends Mage_Customer_Model_Customer {
+class PH2M_Gdpr_Model_Override_Customer_Customer extends Mage_Customer_Model_Customer
+{
     /**
      * Confirmation requirement flag
      *
@@ -89,5 +90,4 @@ class PH2M_Gdpr_Model_Override_Customer_Customer extends Mage_Customer_Model_Cus
         }
         return $errors;
     }
-
 }

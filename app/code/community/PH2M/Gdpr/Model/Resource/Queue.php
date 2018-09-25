@@ -15,7 +15,8 @@
  *
  */
 
-class PH2M_Gdpr_Model_Resource_Queue extends Mage_Core_Model_Resource_Db_Abstract {
+class PH2M_Gdpr_Model_Resource_Queue extends Mage_Core_Model_Resource_Db_Abstract
+{
 
     /**
      * Initialize resource model

@@ -65,6 +65,7 @@ class PH2M_Gdpr_Model_Customer_Data_Download extends Mage_Core_Model_Abstract im
         $this->addCustomerAccountData($fileData, $customer);
         $this->addCustomerAddressData($fileData, $customer);
         $this->addCustomerOrderData($fileData, $customer);
+        $this->addCustomerProductReviewData($fileData, $customer);
         Mage::dispatchEvent('customer_data_download_construct_data_after', ['customer' => $customer, 'fileData' => $fileData]);
         try {
             $jsonData = $fileData->toJson();
@@ -242,6 +243,30 @@ class PH2M_Gdpr_Model_Customer_Data_Download extends Mage_Core_Model_Abstract im
         return true;
     }
 
+    /**
+     * @param $fileData
+     * @param Mage_Customer_Model_Customer $customer $customer
+     * @return bool
+     */
+    protected function addCustomerProductReviewData($fileData, $customer)
+    {
+        /** @var $customer Mage_Customer_Model_Customer */
+        if (!Mage::getStoreConfig('phgdpr/customer_data_download/enable_customer_product_reviews')) {
+            return false;
+        }
+        $reviews = $this->getCustomerProductReviews($customer);
+        if (!$reviews->getSize()) {
+            return false;
+        }
+        $reviewData            = [];
+        foreach ($reviews as $review) {
+            $reviewData[$review->getId()] = $review->getData();
+        }
+
+        $fileData->setProductReviews($reviewData);
+        return true;
+    }
+
 
     /**
      * @param $customer
@@ -252,5 +277,17 @@ class PH2M_Gdpr_Model_Customer_Data_Download extends Mage_Core_Model_Abstract im
         $orders = Mage::getResourceModel('sales/order_collection')
             ->addFieldToFilter('customer_id', $customer->getId());
         return $orders;
+    }
+
+    /**
+     * @param $customer
+     * @return Mage_Review_Model_Resource_Review_Collection
+     */
+    protected function getCustomerProductReviews($customer)
+    {
+        $reviews = Mage::getResourceModel('review/review_collection')
+            ->addCustomerFilter($customer->getId())
+        ;
+        return $reviews;
     }
 }

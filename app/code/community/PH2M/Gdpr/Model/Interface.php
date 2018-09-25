@@ -24,5 +24,4 @@ interface PH2M_Gdpr_Model_Interface
      * @return mixed
      */
     public function run($params);
-
 }

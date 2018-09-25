@@ -1,0 +1,9 @@
+#tarteaucitronRoot #tarteaucitron #tarteaucitronClosePanel { z-index: 1; top: 15px; right: 15px; }
+#tarteaucitronRoot #tarteaucitron #tarteaucitronServices { height: auto !important; max-height: 600px; }
+#tarteaucitronRoot #tarteaucitron #tarteaucitronServices .tarteaucitronMainLine { margin: 0; }
+#tarteaucitronRoot #tarteaucitron #tarteaucitronServices .tarteaucitronTitle button { color: #333333; }
+#tarteaucitronRoot #tarteaucitron #tarteaucitronServices .tarteaucitronDetails { background-color: #333333; }
+#tarteaucitronRoot #tarteaucitronAlertSmall { background-color: #333333; }
+#tarteaucitronRoot #tarteaucitronAlertSmall #tarteaucitronCookiesNumber { background-color: rgba(255, 255, 255, 0.2); }
+
+#tarteaucitron h3 { text-transform: none; }

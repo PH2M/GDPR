@@ -17,19 +17,19 @@
 
 ?>
 <div class="page-title">
-    <h1><?php echo $this->__('Download Account data') ?></h1>
+    <h1><?php echo $this->__('Download my account data') ?></h1>
 </div>
 
 <div>
     <form action="<?php echo Mage::helper('phgdpr')->getDownloadAccountDataUrl() ?>" method="POST">
         <button type="submit" class="button">
             <span>
-                <?php echo $this->__('Download your account information') ?>
+                <?php echo $this->__('Download my account data') ?>
             </span>
         </button>
     </form>
 </div>
 
 <?php if($file = $this->getCustomerDataFile()): ?>
-    <a href="<?php echo Mage::helper('phgdpr')->getDownloadContentFileUrl() ?>" target="_blank"><?php echo $this->__('Download your account data') ?></a>
+    <a href="<?php echo Mage::helper('phgdpr')->getDownloadContentFileUrl() ?>" target="_blank"><?php echo $this->__('Download my account data') ?></a>
 <?php endif; ?>

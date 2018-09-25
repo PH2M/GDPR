@@ -1,0 +1,48 @@
+<?php
+/**
+ * PH2M_Gdpr
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   Gdpr
+ * @copyright  Copyright (c) 2018 PH2M SARL
+ * @author     PH2M SARL <contact@ph2m.com> : http://www.ph2m.com/
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @var $this PH2M_Gdpr_Block_Cookies_Config
+ */
+
+?>
+<script>
+    tarteaucitron.init({
+        "privacyUrl": "<?php echo $this->getPrivacyPageUrl() ?>", /* Privacy policy url */
+
+        "hashtag": "#tarteaucitron", /* Open the panel with this hashtag */
+        "cookieName": "tartaucitron", /* Cookie name */
+
+        "orientation": "bottom", /* Banner position (top - bottom) */
+        "showAlertSmall": true, /* Show the small banner on bottom right */
+        "cookieslist": true, /* Show the cookie list */
+
+        "adblocker": false, /* Show a Warning if an adblocker is detected */
+        "AcceptAllCta" : true, /* Show the accept all button when highPrivacy on */
+        "highPrivacy": true, /* Disable auto consent */
+        "handleBrowserDNTRequest": true, /* If Do Not Track == 1, accept all */
+
+        "removeCredit": false, /* Remove credit link */
+        "moreInfoLink": true /* Show more info link */
+
+    });
+    <?php if ($_customWording = $this->getCustomWording()): ?>
+        tarteaucitronCustomText = <?php echo $_customWording ?>;
+    <?php endif; ?>
+
+</script>
+<?php if($this->enableGAService()): ?>
+    <?php echo $this->getChildHtml('cookie.config.ga.universal') ?>
+<?php endif; ?>
+

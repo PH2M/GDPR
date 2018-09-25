@@ -1,5 +1,6 @@
 Validation.addAllThese([
-    ['validate-password', 'Please enter valid password, without more than 3 options, numeric, lowercase, uppercase, special character', function(v) {
+    ['validate-password', 'Please enter valid password, with 3 or more than options, numeric, lowercase, uppercase, special character and 8 or more characters.', function(v) {
+        // TODO : need to be compatible with bad format if account already created (login form for example)
         return true;
         var pass        = v.strip(); /*strip leading and trailing spaces*/
         var errorCount  = 0;

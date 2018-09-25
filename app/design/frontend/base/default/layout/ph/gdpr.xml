@@ -17,25 +17,58 @@
  */
 -->
 <layout version="0.1.0">
-   <default>
-       <reference name="head">
-           <action method="addItem" ifconfig="phgdpr/fonctionality/password_format_validation" condition="1">
-               <type>skin_js</type>
-               <file>js/ph/gdpr/password-validation.js</file>
-           </action>
-       </reference>
-   </default>
+    <default>
+        <reference name="head">
+            <!-- TODO -->
+            <!--<action method="addItem" ifconfig="phgdpr/fonctionality/password_format_validation" condition="1">-->
+                <!--<type>skin_js</type>-->
+                <!--<file>js/ph/gdpr/password-validation.js</file>-->
+            <!--</action>-->
+            <action method="addItem" ifconfig="phgdpr/cookies/enable" condition="1">
+                <type>skin_js</type>
+                <file>js/ph/gdpr/tarteaucitron/tarteaucitron.js</file>
+            </action>
+
+            <action method="addItem" ifconfig="phgdpr/cookies/enable" condition="1">
+                <type>skin_css</type>
+                <file>js/ph/gdpr/tarteaucitron-custom.css</file>
+            </action>
+
+            <!-- [COOKIES] Google Analitycs -->
+            <action method="unsetChild" ifconfig="phgdpr/cookies/enable_google_analitycs" condition="1">
+                <child>google_analytics</child>
+            </action>
+        </reference>
+
+        <!-- [COOKIES] -->
+        <block type="phgdpr/cookies_config" name="cookie.config" template="ph/gdpr/tarteaucitron/config.phtml" />
+        <reference name="before_body_end">
+            <action method="append" ifconfig="phgdpr/cookies/enable" condition="1">
+                <block>cookie.config</block>
+            </action>
+        </reference>
+        <!-- [COOKIES] Google Analitycs -->
+        <block type="googleanalytics/ga" name="cookie.config.ga.universal" template="ph/gdpr/tarteaucitron/config/ga.phtml" />
+        <reference name="cookie.config">
+            <action method="append" ifconfig="phgdpr/cookies/enable_google_analitycs" condition="1">
+                <block>cookie.config.ga.universal</block>
+            </action>
+        </reference>
+        <action method="remove" ifconfig="phgdpr/cookies/enable_google_analitycs" condition="1">
+            <block>cookie.config.ga.universal</block>
+        </action>
+    </default>
     <customer_account>
         <reference name="customer_account_navigation">
             <action method="addLink" ifconfig="phgdpr/customer_data_remove/enable" condition="1">
                 <name>delete</name>
                 <path>phgdpr/customer/deleteconfirmation</path>
-                <label>Delete Account</label>
+                <label>Delete my account</label>
             </action>
             <action method="addLink" ifconfig="phgdpr/customer_data_download/enable" condition="1">
                 <name>download</name>
                 <path>phgdpr/customer/downloadview</path>
-                <label>Download Data</label>
+                <label>Download my account data</label>
             </action>
         </reference>
     </customer_account>
