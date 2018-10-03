@@ -88,8 +88,7 @@ class PH2M_Gdpr_Model_Queue extends Mage_Core_Model_Abstract
     public function getQueuesForEntityType($entityType)
     {
         $collection = Mage::getResourceModel('phgdpr/queue_collection')
-            ->addFieldToFilter('entity_type', $entityType)
-        ;
+            ->addFieldToFilter('entity_type', $entityType);
 
         if ($collection->getSize() < 1) {
             return false;

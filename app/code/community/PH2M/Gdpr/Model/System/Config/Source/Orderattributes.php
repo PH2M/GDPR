@@ -16,7 +16,6 @@
  */
 class PH2M_Gdpr_Model_System_Config_Source_Orderattributes
 {
-
     protected $_options;
 
     /**
@@ -25,7 +24,7 @@ class PH2M_Gdpr_Model_System_Config_Source_Orderattributes
     public function toOptionArray()
     {
         if (!$this->_options) {
-            $resource = Mage::getSingleton('core/resource');
+            $resource       = Mage::getSingleton('core/resource');
             $readConnection = $resource->getConnection('core_read');
             /**
              * Get the table name

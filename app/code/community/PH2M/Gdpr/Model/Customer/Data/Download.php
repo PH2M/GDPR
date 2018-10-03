@@ -17,7 +17,6 @@
 
 class PH2M_Gdpr_Model_Customer_Data_Download extends Mage_Core_Model_Abstract implements PH2M_Gdpr_Model_Runinterface
 {
-
     const XML_PATH_EMAIL_TEMPLATE           = 'phgdpr/customer_data_download/email_template';
     const XML_PATH_EMAIL_SENDER             = 'phgdpr/customer_data_download/email_sender_identity';
 
@@ -79,9 +78,8 @@ class PH2M_Gdpr_Model_Customer_Data_Download extends Mage_Core_Model_Abstract im
         if (Mage::getStoreConfig('phgdpr/customer_data_download/download_action_in_queue')) {
             $this->sendCanDownloadFileMail($jsonData, $customer);
             return true;
-        } else {
-            return $jsonData;
         }
+        return $jsonData;
     }
 
     /**
@@ -97,7 +95,7 @@ class PH2M_Gdpr_Model_Customer_Data_Download extends Mage_Core_Model_Abstract im
         if ($template) {
             $mailTemplate = Mage::getModel('core/email_template');
             /* @var $mailTemplate Mage_Core_Model_Email_Template */
-            $mailTemplate->setDesignConfig(array('area' => 'frontend'))
+            $mailTemplate->setDesignConfig(['area' => 'frontend'])
                 ->sendTransactional(
                     Mage::getStoreConfig(self::XML_PATH_EMAIL_TEMPLATE),
                     Mage::getStoreConfig(self::XML_PATH_EMAIL_SENDER),
@@ -201,8 +199,7 @@ class PH2M_Gdpr_Model_Customer_Data_Download extends Mage_Core_Model_Abstract im
             foreach ($addressAttributes as $attribute) {
                 $attributeName = $address->getResource()
                     ->getAttribute($attribute)
-                    ->getFrontendLabel()
-                ;
+                    ->getFrontendLabel();
                 $addressData[$address->getId()][$attributeName] = $address->getData($attribute);
             }
         }
@@ -286,8 +283,7 @@ class PH2M_Gdpr_Model_Customer_Data_Download extends Mage_Core_Model_Abstract im
     protected function getCustomerProductReviews($customer)
     {
         $reviews = Mage::getResourceModel('review/review_collection')
-            ->addCustomerFilter($customer->getId())
-        ;
+            ->addCustomerFilter($customer->getId());
         return $reviews;
     }
 }

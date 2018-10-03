@@ -22,6 +22,7 @@
     }
   ],
   "require-dev": {
-    "generate-modman/generate-modman": "dev-master"
+    "generate-modman/generate-modman": "dev-master",
+    "friendsofphp/php-cs-fixer": "^2.13"
   }
 }

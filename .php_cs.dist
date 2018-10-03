@@ -1,0 +1,32 @@
+<?php
+
+$finder = PhpCsFixer\Finder::create()
+    ->in(array(__DIR__))
+;
+
+return PhpCsFixer\Config::create()
+    ->setRiskyAllowed(true)
+    ->setRules([
+        '@PSR2' => true,
+        'align_multiline_comment' => true,
+        'array_syntax' => ['syntax' => 'short'],
+        'binary_operator_spaces' => ['operators' => ['=' => 'align']],
+        'combine_consecutive_issets' => true,
+        'combine_consecutive_unsets' => true,
+        'concat_space' => ['spacing' => 'one'],
+        'heredoc_to_nowdoc' => true,
+        'linebreak_after_opening_tag' => true,
+        'native_function_invocation' => false,
+        'no_multiline_whitespace_before_semicolons' => true,
+        'no_php4_constructor' => true,
+        'no_short_echo_tag' => true,
+        'no_unreachable_default_argument_value' => true,
+        'no_useless_else' => true,
+        'no_useless_return' => true,
+        'ordered_imports' => true,
+        'return_type_declaration' => ['space_before' => 'one'],
+        'unary_operator_spaces' => false,
+        'yoda_style' => false,
+    ])
+    ->setFinder($finder)
+;

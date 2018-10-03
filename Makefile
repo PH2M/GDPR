@@ -8,3 +8,7 @@ help: ## Dislay this help
 	done; unset IFS;
 modman: ## Regenerate modman
 	vendor/bin/generate-modman --include-others  --include-others-files
+phpcsfixer_dry_run: ## Return an error code if PHP errors codes
+	./vendor/bin/php-cs-fixer fix --verbose --show-progress dots --dry-run
+phpcsfixer_fix: ## Fix PHP Coding styles (need composer install (dev) first)
+	./vendor/bin/php-cs-fixer fix --verbose --show-progress dots

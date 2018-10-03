@@ -17,7 +17,6 @@
 
 class PH2M_Gdpr_Model_Customer_Data_Remove extends Mage_Core_Model_Abstract implements PH2M_Gdpr_Model_Runinterface
 {
-
     const XML_PATH_EMAIL_TEMPLATE           = 'phgdpr/customer_data_remove/confirm_email_template';
     const XML_PATH_EMAIL_SENDER             = 'phgdpr/customer_data_remove/email_sender_identity';
 
@@ -100,7 +99,7 @@ class PH2M_Gdpr_Model_Customer_Data_Remove extends Mage_Core_Model_Abstract impl
         if ($template) {
             $mailTemplate = Mage::getModel('core/email_template');
             /* @var $mailTemplate Mage_Core_Model_Email_Template */
-            $mailTemplate->setDesignConfig(array('area' => 'frontend'))
+            $mailTemplate->setDesignConfig(['area' => 'frontend'])
                 ->sendTransactional(
                     Mage::getStoreConfig(self::XML_PATH_EMAIL_TEMPLATE),
                     Mage::getStoreConfig(self::XML_PATH_EMAIL_SENDER),
@@ -257,8 +256,7 @@ class PH2M_Gdpr_Model_Customer_Data_Remove extends Mage_Core_Model_Abstract impl
     protected function getCustomerProductReviews($customer)
     {
         $reviews = Mage::getResourceModel('review/review_collection')
-            ->addCustomerFilter($customer->getId())
-        ;
+            ->addCustomerFilter($customer->getId());
         return $reviews;
     }
 

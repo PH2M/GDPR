@@ -29,7 +29,7 @@ class PH2M_Gdpr_Block_Cookies_Config extends Mage_Core_Block_Template
         /*
         * setting cache to save the core config
         */
-        $this->setCacheTags(array(Mage_Core_Model_Config::CACHE_TAG));
+        $this->setCacheTags([Mage_Core_Model_Config::CACHE_TAG]);
         $this->setCacheLifetime('86400');
     }
 

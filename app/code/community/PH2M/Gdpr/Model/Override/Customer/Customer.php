@@ -35,12 +35,12 @@ class PH2M_Gdpr_Model_Override_Customer_Customer extends Mage_Customer_Model_Cus
      */
     public function validate()
     {
-        $errors = array();
-        if (!Zend_Validate::is( trim($this->getFirstname()) , 'NotEmpty')) {
+        $errors = [];
+        if (!Zend_Validate::is(trim($this->getFirstname()), 'NotEmpty')) {
             $errors[] = Mage::helper('customer')->__('The first name cannot be empty.');
         }
 
-        if (!Zend_Validate::is( trim($this->getLastname()) , 'NotEmpty')) {
+        if (!Zend_Validate::is(trim($this->getLastname()), 'NotEmpty')) {
             $errors[] = Mage::helper('customer')->__('The last name cannot be empty.');
         }
 
@@ -52,15 +52,15 @@ class PH2M_Gdpr_Model_Override_Customer_Customer extends Mage_Customer_Model_Cus
 
         // START REWRITE
         // IF password format for gdpr is disable, use magento basic check
-        if(!Mage::helper('phgdpr/password')->isPasswordGdprValidationEnabled()) {
-            if (!$this->getId() && !Zend_Validate::is($password , 'NotEmpty')) {
+        if (!Mage::helper('phgdpr/password')->isPasswordGdprValidationEnabled()) {
+            if (!$this->getId() && !Zend_Validate::is($password, 'NotEmpty')) {
                 $errors[] = Mage::helper('customer')->__('The password cannot be empty.');
             }
-            if (strlen($password) && !Zend_Validate::is($password, 'StringLength', array(6))) {
+            if (strlen($password) && !Zend_Validate::is($password, 'StringLength', [6])) {
                 $errors[] = Mage::helper('customer')->__('The minimum password length is %s', 6);
             }
         } else {
-            if(!$this->getId() && strlen($password) && $errorPassword = Mage::helper('phgdpr/password')->invalidPasswordFormat($password)) {
+            if (!$this->getId() && strlen($password) && $errorPassword = Mage::helper('phgdpr/password')->invalidPasswordFormat($password)) {
                 $errors[] = $errorPassword;
             }
         }
@@ -72,7 +72,7 @@ class PH2M_Gdpr_Model_Override_Customer_Customer extends Mage_Customer_Model_Cus
         }
 
         $entityType = Mage::getSingleton('eav/config')->getEntityType('customer');
-        $attribute = Mage::getModel('customer/attribute')->loadByCode($entityType, 'dob');
+        $attribute  = Mage::getModel('customer/attribute')->loadByCode($entityType, 'dob');
         if ($attribute->getIsRequired() && '' == trim($this->getDob())) {
             $errors[] = Mage::helper('customer')->__('The Date of Birth is required.');
         }

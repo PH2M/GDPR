@@ -17,7 +17,6 @@
 
 class PH2M_Gdpr_Block_Adminhtml_System_Config_Gdpr_Status extends Mage_Adminhtml_Block_System_Config_Form_Fieldset
 {
-
     public function render(Varien_Data_Form_Element_Abstract $element)
     {
         $html = Mage::getBlockSingleton('phgdpr/adminhtml_gdpr_status')->toHtml();

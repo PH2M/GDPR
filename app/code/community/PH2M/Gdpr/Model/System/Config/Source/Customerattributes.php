@@ -16,7 +16,6 @@
  */
 class PH2M_Gdpr_Model_System_Config_Source_Customerattributes
 {
-
     protected $_options;
 
     /**
@@ -24,7 +23,6 @@ class PH2M_Gdpr_Model_System_Config_Source_Customerattributes
      */
     public function toOptionArray()
     {
-
         if (!$this->_options) {
             $attributes = Mage::getModel('customer/customer')->getAttributes();
 

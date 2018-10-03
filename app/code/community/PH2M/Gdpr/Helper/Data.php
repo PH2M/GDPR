@@ -27,8 +27,8 @@ class PH2M_Gdpr_Helper_Data extends Mage_Core_Helper_Abstract
             return 'anonymous';
         } elseif ($type == 'email') {
             $randString = str_repeat('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(1, 10));
-            $rand = substr(str_shuffle($randString), 1, 10);
-            return $rand.'@example.com';
+            $rand       = substr(str_shuffle($randString), 1, 10);
+            return $rand . '@example.com';
         } elseif ($type == 'ip') {
             return '0.0.0.0';
         }
@@ -43,9 +43,8 @@ class PH2M_Gdpr_Helper_Data extends Mage_Core_Helper_Abstract
         if ($delay = Mage::getStoreConfig('phgdpr/customer_data_remove/queue_delay')) {
             $timestamp = Mage::getSingleton('core/date')->gmtTimestamp() + $delay;
             return date("Y-m-d H:i:s", $timestamp);
-        } else {
-            return Mage::getModel('core/date')->gmtDate('Y-m-d H:i:s');
         }
+        return Mage::getModel('core/date')->gmtDate('Y-m-d H:i:s');
     }
 
 
@@ -57,9 +56,8 @@ class PH2M_Gdpr_Helper_Data extends Mage_Core_Helper_Abstract
         if ($delay = Mage::getStoreConfig('phgdpr/customer_data_download/queue_delay_remove_file')) {
             $timestamp = Mage::getSingleton('core/date')->gmtTimestamp() + $delay;
             return date("Y-m-d H:i:s", $timestamp);
-        } else {
-            return Mage::getModel('core/date')->gmtDate('Y-m-d H:i:s');
         }
+        return Mage::getModel('core/date')->gmtDate('Y-m-d H:i:s');
     }
 
     /**

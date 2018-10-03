@@ -26,23 +26,23 @@ $installer = $this;
 
 $table = $installer->getConnection()
     ->newTable($installer->getTable('phgdpr/queue'))
-    ->addColumn('queue_id', Varien_Db_Ddl_Table::TYPE_SMALLINT, null, array(
-        'identity'  => true,
-        'nullable'  => false,
-        'primary'   => true,
-		'unsigned'  => true,
-        ), 'ID')
-    ->addColumn('entity_type', Varien_Db_Ddl_Table::TYPE_VARCHAR, 255, array(
-        'nullable'  => false,
-    ), 'Entity type')
-    ->addColumn('params', Varien_Db_Ddl_Table::TYPE_TEXT, null, array(
-        'nullable'  => false,
-        ), 'Params')
-    ->addColumn('run_date', Varien_Db_Ddl_Table::TYPE_TIMESTAMP, null, array(
-    ), 'Run date')
-    ->addColumn('creation_time', Varien_Db_Ddl_Table::TYPE_TIMESTAMP, null, array(
-        ), 'Creation Time')
-    ->addColumn('update_time', Varien_Db_Ddl_Table::TYPE_TIMESTAMP, null, array(
-        ), 'Modification Time')
+    ->addColumn('queue_id', Varien_Db_Ddl_Table::TYPE_SMALLINT, null, [
+        'identity' => true,
+        'nullable' => false,
+        'primary' => true,
+        'unsigned' => true,
+        ], 'ID')
+    ->addColumn('entity_type', Varien_Db_Ddl_Table::TYPE_VARCHAR, 255, [
+        'nullable' => false,
+    ], 'Entity type')
+    ->addColumn('params', Varien_Db_Ddl_Table::TYPE_TEXT, null, [
+        'nullable' => false,
+        ], 'Params')
+    ->addColumn('run_date', Varien_Db_Ddl_Table::TYPE_TIMESTAMP, null, [
+    ], 'Run date')
+    ->addColumn('creation_time', Varien_Db_Ddl_Table::TYPE_TIMESTAMP, null, [
+        ], 'Creation Time')
+    ->addColumn('update_time', Varien_Db_Ddl_Table::TYPE_TIMESTAMP, null, [
+        ], 'Modification Time')
     ->setComment('Queue Table');
 $installer->getConnection()->createTable($table);

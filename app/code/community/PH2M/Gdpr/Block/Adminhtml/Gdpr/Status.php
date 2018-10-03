@@ -40,8 +40,7 @@ class PH2M_Gdpr_Block_Adminhtml_Gdpr_Status extends Mage_Core_Block_Template
             return 'bad';
         } elseif ($config == PH2M_Gdpr_Model_System_Config_Source_Rulesvalidity::WAIT_MANUAL_VALIDATION) {
             return 'wait';
-        } else {
-            return 'good';
         }
+        return 'good';
     }
 }

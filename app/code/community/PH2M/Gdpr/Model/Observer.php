@@ -18,8 +18,8 @@ class PH2M_Gdpr_Model_Observer
 {
     protected $configModel;
     const EXCEPTION_ACCOUNT_GDPR_LOCK = 20;
-    const DEFAULT_ATTEMPS_NUMBER = 5;
-    const DEFAULT_TIME_BLOCKED = 5;
+    const DEFAULT_ATTEMPS_NUMBER      = 5;
+    const DEFAULT_TIME_BLOCKED        = 5;
 
 
     /**
@@ -90,7 +90,6 @@ class PH2M_Gdpr_Model_Observer
      */
     public function limitLoginAttempts(Varien_Event_Observer $observer)
     {
-
         if (Mage::getStoreConfig('phgdpr/fonctionality/login_limit_attempts') && !$this->verifyAttempts()) {
             exit($observer->getEvent()->getControllerAction()->getResponse()->setRedirect(Mage::helper('core/http')->getHttpReferer()));
         }
@@ -105,13 +104,12 @@ class PH2M_Gdpr_Model_Observer
      */
     protected function verifyAttempts()
     {
-
         if (!$numberAttempts = Mage::getStoreConfig('phgdpr/fonctionality/customer_login_attempts_number')) {
             $numberAttempts = self::DEFAULT_ATTEMPS_NUMBER;
         }
 
-        if (!$timeBlocked = intval(Mage::getStoreConfig('phgdpr/fonctionality/customer_login_time_blocked'))*60) {
-            $timeBlocked = self::DEFAULT_TIME_BLOCKED*60;
+        if (!$timeBlocked = intval(Mage::getStoreConfig('phgdpr/fonctionality/customer_login_time_blocked')) * 60) {
+            $timeBlocked = self::DEFAULT_TIME_BLOCKED * 60;
         }
 
         $cookie = Mage::getSingleton('core/cookie');
@@ -120,16 +118,15 @@ class PH2M_Gdpr_Model_Observer
         if ($cookieLoginAttempts) {
             if ($cookieLoginAttempts >= $numberAttempts) {
                 Mage::getSingleton('core/session')->addError(
-                    Mage::helper('core')->__('You tried to log in too many times, you can try again after %s minutes', ($timeBlocked/60))
+                    Mage::helper('core')->__('You tried to log in too many times, you can try again after %s minutes', ($timeBlocked / 60))
                 );
             }
             $cookieLoginAttempts++;
             $cookie->set('login_attempts', $cookieLoginAttempts, $timeBlocked, '/');
             return false;
         }
-        else {
-            $cookie->set('login_attempts', 1, $timeBlocked, '/');
-        }
+        $cookie->set('login_attempts', 1, $timeBlocked, '/');
+        
 
         return true;
     }

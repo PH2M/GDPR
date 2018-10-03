@@ -18,7 +18,6 @@
 
 class PH2M_Gdpr_CustomerController extends Mage_Core_Controller_Front_Action
 {
-
     public function deleteConfirmationAction()
     {
         if (!Mage::getStoreConfig('phgdpr/customer_data_remove/enable')) {
@@ -57,7 +56,6 @@ class PH2M_Gdpr_CustomerController extends Mage_Core_Controller_Front_Action
      */
     public function downloadFileAction()
     {
-
         if (!Mage::getStoreConfig('phgdpr/customer_data_download/enable')) {
             return false;
         }
@@ -72,10 +70,9 @@ class PH2M_Gdpr_CustomerController extends Mage_Core_Controller_Front_Action
         if (file_exists($file)) {
             $data = file_get_contents($file);
             return $this->_prepareDownloadResponse('customer-information.json', $data);
-        } else {
-            Mage::getSingleton('core/session')->addError(Mage::helper('phgdpr')->__('Sorry, but this file does not exist'));
-            return $this->_redirectReferer();
         }
+        Mage::getSingleton('core/session')->addError(Mage::helper('phgdpr')->__('Sorry, but this file does not exist'));
+        return $this->_redirectReferer();
     }
 
     /**
@@ -99,7 +96,7 @@ class PH2M_Gdpr_CustomerController extends Mage_Core_Controller_Front_Action
             $hashPassword           = explode(':', $hash);
             $firstPart              = $hashPassword[0];
             $salt                   = $hashPassword[1];
-            $current_password       = md5($salt.$passwordConfirmation);
+            $current_password       = md5($salt . $passwordConfirmation);
 
             if ($current_password != $firstPart) {
                 Mage::getSingleton('core/session')->addError(Mage::helper('phgdpr')->__('Invalid password'));

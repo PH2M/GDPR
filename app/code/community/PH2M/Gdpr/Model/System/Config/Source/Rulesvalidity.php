@@ -30,9 +30,8 @@
  */
 class PH2M_Gdpr_Model_System_Config_Source_Rulesvalidity
 {
-
-    const NO_VALID = 0;
-    const VALID = 1;
+    const NO_VALID               = 0;
+    const VALID                  = 1;
     const WAIT_MANUAL_VALIDATION = 2;
 
     /**
@@ -42,11 +41,11 @@ class PH2M_Gdpr_Model_System_Config_Source_Rulesvalidity
      */
     public function toOptionArray()
     {
-        return array(
-            array('value' => self::NO_VALID, 'label'=>Mage::helper('adminhtml')->__('No valid')),
-            array('value' => self::VALID, 'label'=>Mage::helper('adminhtml')->__('Valid')),
-            array('value' => self::WAIT_MANUAL_VALIDATION, 'label'=>Mage::helper('adminhtml')->__('Wait manual validation')),
-        );
+        return [
+            ['value' => self::NO_VALID, 'label' => Mage::helper('adminhtml')->__('No valid')],
+            ['value' => self::VALID, 'label' => Mage::helper('adminhtml')->__('Valid')],
+            ['value' => self::WAIT_MANUAL_VALIDATION, 'label' => Mage::helper('adminhtml')->__('Wait manual validation')],
+        ];
     }
 
     /**
@@ -56,10 +55,10 @@ class PH2M_Gdpr_Model_System_Config_Source_Rulesvalidity
      */
     public function toArray()
     {
-        return array(
+        return [
             self::NO_VALID => Mage::helper('adminhtml')->__('No valid'),
             self::VALID => Mage::helper('adminhtml')->__('Valid'),
             self::WAIT_MANUAL_VALIDATION => Mage::helper('adminhtml')->__('Wait manual validation'),
-        );
+        ];
     }
 }

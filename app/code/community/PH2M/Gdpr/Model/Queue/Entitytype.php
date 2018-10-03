@@ -18,7 +18,6 @@
 
 class PH2M_Gdpr_Model_Queue_Entitytype extends Varien_Object
 {
-
     const CUSTOMER_DELETE_DATA            = 'phgdpr/customer_data_remove';
     const CUSTOMER_DOWNLOAD_DATA          = 'phgdpr/customer_data_download';
     const CUSTOMER_REMOVE_DOWNLOAD_FILE   = 'phgdpr/clean_removefile';

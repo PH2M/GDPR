@@ -25,23 +25,23 @@ class PH2M_Gdpr_Model_Resource_Setup_Customer extends Mage_Customer_Model_Resour
     public function getDefaultEntities()
     {
         $entities = [
-            'customer'                       => [
-                'entity_model'                   => 'customer/customer',
-                'attribute_model'                => 'customer/attribute',
-                'table'                          => 'customer/entity',
-                'increment_model'                => 'eav/entity_increment_numeric',
-                'additional_attribute_table'     => 'customer/eav_attribute',
-                'entity_attribute_collection'    => 'customer/attribute_collection',
-                'attributes'                     => [
-                    'is_gdpr_lock'         => [
-                        'type'       => 'int',
-                        'label'      => 'Is GDPR lock',
-                        'input'      => 'select',
-                        'source'     => 'eav/entity_attribute_source_boolean',
-                        'required'   => false,
+            'customer' => [
+                'entity_model' => 'customer/customer',
+                'attribute_model' => 'customer/attribute',
+                'table' => 'customer/entity',
+                'increment_model' => 'eav/entity_increment_numeric',
+                'additional_attribute_table' => 'customer/eav_attribute',
+                'entity_attribute_collection' => 'customer/attribute_collection',
+                'attributes' => [
+                    'is_gdpr_lock' => [
+                        'type' => 'int',
+                        'label' => 'Is GDPR lock',
+                        'input' => 'select',
+                        'source' => 'eav/entity_attribute_source_boolean',
+                        'required' => false,
                         'sort_order' => 120,
                         'is_visible' => 0,
-                        'position'   => 120
+                        'position' => 120
                     ]
                 ]
             ]
