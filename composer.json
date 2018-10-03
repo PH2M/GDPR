@@ -12,5 +12,16 @@
   "suggest": {
     "magento-hackathon/magento-composer-installer": "Allows to manage this package as a dependency.",
     "aoepeople/aoe_scheduler": "Required if you use queue system"
+  },
+  "minimum-stability": "dev",
+
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/mhauri/generate-modman"
+    }
+  ],
+  "require-dev": {
+    "generate-modman/generate-modman": "dev-master"
   }
 }

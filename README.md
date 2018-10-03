@@ -114,7 +114,7 @@ GNU General Public License, version 3 (GPLv3)
 Auto-generate modman with https://github.com/mhauri/generate-modman:
 
 ```
-generate-modman --include-others  --include-others-files
+make modman
 ```
 
 ## Configuration recommended (With magerun)

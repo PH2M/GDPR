@@ -1,0 +1,48 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "2006636a981546ef01eee4cc90e0dc5c",
+    "packages": [],
+    "packages-dev": [
+        {
+            "name": "generate-modman/generate-modman",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mhauri/generate-modman.git",
+                "reference": "9fa4cda38bb8b44cec4b6ae638af072163a35b73"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mhauri/generate-modman/zipball/9fa4cda38bb8b44cec4b6ae638af072163a35b73",
+                "reference": "9fa4cda38bb8b44cec4b6ae638af072163a35b73",
+                "shasum": ""
+            },
+            "bin": [
+                "generate-modman"
+            ],
+            "type": "library",
+            "license": [
+                "MIT"
+            ],
+            "description": "Automatically generate modman file for Magento 1 modules on the fly",
+            "support": {
+                "source": "https://github.com/mhauri/generate-modman/tree/master",
+                "issues": "https://github.com/mhauri/generate-modman/issues"
+            },
+            "time": "2016-08-04 14:00:00"
+        }
+    ],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "generate-modman/generate-modman": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
