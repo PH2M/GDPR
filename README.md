@@ -1,11 +1,8 @@
 # PH2M GDPR
-
 Free Magento 1 module for respect reform of EU data protection rules (GDPR)
 
-
 ## Requirements
-
-- Only test on Magento 1.9.x (but probably work on magento 1.4.x to 1.9.x)
+- Only test on Magento 1.9.x (but probably works on magento 1.4.x to 1.9.x)
 
 ## Changelog 
 See RELEASE_NOTES.txt
@@ -48,6 +45,12 @@ Download this module and add 'app' and 'skin' directory to you magento
 - Enable all feature who you want on 'System > Configuration > General > GDPR'
 - Run cron phgdpr_check_rules and check GDPR validity on 'System > Configuration > General > GDPR > Status'
 - You can test download data or remove data from your customer dashboard
+
+## Password validation
+You must customize your theme if you want to enable the JS password validation.
+Follow these steps:
+1. Uncomment the `password-validation.js` inclusion in `app/design/frontend/base/default/layout/ph/gdpr.xml`
+2. In your theme's register template, replace the `validate-password` class by `validate-gdpr-password`. Usually, you should have `customer/form/register.phtml` and `checkout/onepage/billing.phtml`.
 
 ## Developer guide
 #### ADD Custom process before / after customer download or remove data
@@ -102,24 +105,17 @@ You can add your own custom process thanks to the queue system. for this, follow
  - params (you can add all info you want to get for you process)
  - run_date (date when you want run your process, keep empty for run at the next queue running)
 
-
-
 ## Licence
-
 GNU General Public License, version 3 (GPLv3)
 
-
 ## Mini-help for contribution
-
 Auto-generate modman with https://github.com/mhauri/generate-modman:
-
 ```
 make modman
 ```
 
 ## Configuration recommended (With magerun)
- ```
-
+```
 magerun config:set  "phgdpr/fonctionality/password_format_validation" "1"
 magerun config:set  "phgdpr/fonctionality/login_limit_attempts" "1"
 
@@ -136,5 +132,4 @@ magerun config:set  "phgdpr/customer_data_download/enable_customer_download_addr
 magerun config:set  "phgdpr/customer_data_download/address_attribute_to_export" "prefix,firstname,middlename,lastname,suffix,company,street,city,country_id,region,postcode,telephone,fax"
 magerun config:set  "phgdpr/customer_data_download/enable_customer_download_orders" "1"
 magerun config:set  "phgdpr/customer_data_download/order_attribute_to_export" "created_at,customer_dob,customer_email,customer_firstname,customer_gender,customer_lastname,customer_middlename,customer_prefix,customer_suffix,discount_amount,grand_total,shipping_amount,increment_id"
-
- ```
+```
