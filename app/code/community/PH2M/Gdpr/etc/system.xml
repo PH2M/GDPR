@@ -27,7 +27,7 @@
             <show_in_store>1</show_in_store>
             <groups>
                 <status translate="label">
-                    <label>Status</label>
+                    <label>GDPR rules validity</label>
                     <sort_order>10</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
@@ -37,7 +37,7 @@
                         <status translate="label comment">
                             <label>Status</label>
                             <frontend_type>text</frontend_type>
-                            <frontend_model>phgdpr/adminhtml_system_config_gdpr_status</frontend_model>
+                            <frontend_model>phgdpr/adminhtml_system_config_gdpr_rules</frontend_model>
                             <sort_order>10</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
@@ -54,7 +54,7 @@
                     <expanded>1</expanded>
                     <fields>
                         <password_format_validation translate="label comment">
-                            <label>Enable password GDPR format validation</label>
+                            <label>Enable password CNIL format validation</label>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>10</sort_order>
@@ -101,9 +101,9 @@
                 <valid_rules>
                     <label>Valid rules</label>
                     <sort_order>100</sort_order>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
+                    <show_in_default>0</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
                     <expanded>0</expanded>
                     <fields>
                         <customer_complex_password translate="label comment">
@@ -115,15 +115,6 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </customer_complex_password>
-                        <customer_password_reset translate="label comment">
-                            <label>Customer password reset</label>
-                            <frontend_type>select</frontend_type>
-                            <source_model>phgdpr/system_config_source_rulesvalidity</source_model>
-                            <sort_order>20</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </customer_password_reset>
                         <customer_login_limit_attempts translate="label comment">
                             <label>Customer multi login attempts limit</label>
                             <frontend_type>select</frontend_type>

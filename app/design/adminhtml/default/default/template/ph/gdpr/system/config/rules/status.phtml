@@ -13,20 +13,19 @@
  * @copyright  Copyright (c) 2018 PH2M SARL
  * @author     PH2M SARL <contact@ph2m.com> : http://www.ph2m.com/
  *
- * @var $this PH2M_Gdpr_Block_Adminhtml_Gdpr_Status
+ * @var $this PH2M_Gdpr_Block_Adminhtml_Gdpr_Rules_Status
  */
 
 
 ?>
 <div class="gdpr-status">
+    <span><?php echo $this->__('How this module work ?') ?></span> <a href="https://github.com/PH2M/GDPR/wiki" target="_blank"><?php echo $this->__('See documentation') ?></a>
     <h2><?php echo $this->__('Customer status') ?></h2>
     <ul>
         <li class="<?php echo $this->getCssClass('phgdpr/valid_rules/customer_complex_password') ?>">
             <?php echo $this->__('Complex password (Cnil)') ?>
         </li>
-        <li class="<?php echo $this->getCssClass('phgdpr/valid_rules/customer_password_reset') ?>">
-            <?php echo $this->__('Password reset') ?>
-        </li>
+
         <li class="<?php echo $this->getCssClass('phgdpr/valid_rules/customer_login_limit_attempts') ?>">
             <?php echo $this->__('Secure multi try log in') ?>
         </li>
@@ -45,9 +44,25 @@
     </ul>
 </div>
 <style>
+    #phgdpr_status.loading {
+        opacity:0.5;
+
+    }
+    .message-gdpr-action {
+        font-weight:800;
+    }
     .gdpr-status li.good {
         color: green;
         position: relative;
+    }
+    .gdpr-status {
+        display: inline-block;
+        float: left;
+    }
+    .gdpr-action {
+        display: inline-block;
+        padding: 49px 40px;
+        width: 400px;
     }
     .gdpr-status li.good:before {
         content: "\2713";

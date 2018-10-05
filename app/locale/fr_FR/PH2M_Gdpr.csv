@@ -10,7 +10,7 @@
 "Remove account request","Demande de suppression de compte"
 "Download own information","Téléchargement de ses données"
 "Functionality","Fonctionnalités"
-"Enable password GDPR format validation","Activer la validation du format RGPD pour le mot de passe"
+"Enable password CNIL format validation","Activer la validation du format CNIL pour le mot de passe"
 "Enable login limit attemps","Activer la limitation de tentative de connexion"
 "Valid rules","Validité des règles"
 "Customer complex password","Client mot de passe complexe"
@@ -63,6 +63,9 @@
 "default value, 5 try","valeur par défault, 5 tentatives"
 "Time blocked","Temps de blocage"
 "in minutes, default value 5 minutes","En minutes, valeur par défaut 5 minutes"
+"GDPR rules validity","Validité des règles RGDP"
+"How this module work ?","Comment le module fonctionne ?"
+"See documentation","Voir la documentation"
 #############
 ### FRONT ###
 #############

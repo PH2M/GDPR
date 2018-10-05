@@ -43,7 +43,6 @@ Download this module and add 'app' and 'skin' directory to you magento
     
 ## Usage
 - Enable all feature who you want on 'System > Configuration > General > GDPR'
-- Run cron phgdpr_check_rules and check GDPR validity on 'System > Configuration > General > GDPR > Status'
 - You can test download data or remove data from your customer dashboard
 
 ## Password validation

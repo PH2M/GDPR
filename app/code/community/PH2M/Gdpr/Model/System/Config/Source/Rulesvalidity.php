@@ -25,14 +25,12 @@
  */
 
 /**
- * Used in creating options for Yes|No config value selection
- *
+ * Class PH2M_Gdpr_Model_System_Config_Source_Rulesvalidity
  */
 class PH2M_Gdpr_Model_System_Config_Source_Rulesvalidity
 {
-    const NO_VALID               = 0;
-    const VALID                  = 1;
-    const WAIT_MANUAL_VALIDATION = 2;
+    const NO_VALID = 0;
+    const VALID    = 1;
 
     /**
      * Options getter
@@ -43,8 +41,7 @@ class PH2M_Gdpr_Model_System_Config_Source_Rulesvalidity
     {
         return [
             ['value' => self::NO_VALID, 'label' => Mage::helper('adminhtml')->__('No valid')],
-            ['value' => self::VALID, 'label' => Mage::helper('adminhtml')->__('Valid')],
-            ['value' => self::WAIT_MANUAL_VALIDATION, 'label' => Mage::helper('adminhtml')->__('Wait manual validation')],
+            ['value' => self::VALID, 'label' => Mage::helper('adminhtml')->__('Valid')]
         ];
     }
 
@@ -57,8 +54,7 @@ class PH2M_Gdpr_Model_System_Config_Source_Rulesvalidity
     {
         return [
             self::NO_VALID => Mage::helper('adminhtml')->__('No valid'),
-            self::VALID => Mage::helper('adminhtml')->__('Valid'),
-            self::WAIT_MANUAL_VALIDATION => Mage::helper('adminhtml')->__('Wait manual validation'),
+            self::VALID => Mage::helper('adminhtml')->__('Valid')
         ];
     }
 }
