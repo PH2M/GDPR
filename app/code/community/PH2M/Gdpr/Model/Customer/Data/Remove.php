@@ -267,6 +267,9 @@ class PH2M_Gdpr_Model_Customer_Data_Remove extends Mage_Core_Model_Abstract impl
      */
     protected function anonymizeSaleAddress($address)
     {
+        if(empty($address)){
+            return;
+        }
         $helper = Mage::helper('phgdpr');
         $address->setFirstname($helper->getRandom());
         $address->setMiddlename($helper->getRandom());
