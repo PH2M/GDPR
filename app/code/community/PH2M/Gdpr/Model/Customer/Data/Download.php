@@ -114,7 +114,7 @@ class PH2M_Gdpr_Model_Customer_Data_Download extends Mage_Core_Model_Abstract im
     public function saveDataInFile($jsonData, $customer)
     {
         $directory  =  Mage::getBaseDir('var') . DS . 'phgdpr';
-        $file       = $directory . DS . 'customer-data-file-' . $customer->getId() . '.json';
+        $file       = $directory . DS . 'customer-data-file-' . $customer->getId() . '.txt';
         if (!file_exists($directory)) {
             mkdir($directory, 0777, true);
         }

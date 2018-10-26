@@ -1,21 +1,28 @@
-# PH2M GDPR
+GDPR Module for Magento 1
+==================
 Free Magento 1 module for respect reform of EU data protection rules (GDPR)
 
-## Requirements
-- Only test on Magento 1.9.x (but probably works on magento 1.4.x to 1.9.x)
+![Latest version](https://img.shields.io/badge/latest-v1.1.2-green.svg)
+![PHP >= 5.3](https://img.shields.io/badge/php-%3E=5.3-green.svg)
+![Magento 1.9.3](https://img.shields.io/badge/magento-1.9.3-blue.svg)
 
-## Changelog 
+
+Changelog 
+--------
 See RELEASE_NOTES.txt
 
-## Installation
+Installation
+---------
 Composer :
 ```
 composer require ph2m/gdpr
 ```
+
 Manual :
 Download this module and add 'app' and 'skin' directory to you magento
 
-## Feature
+Feature
+-------
 **Full manageable, you can enabled / disabled all functionality from your back-office**
 - Download, remove and anonymize customer data
     - Live system: customer can directly download or remove their own data from their dashboard
@@ -41,79 +48,30 @@ Download this module and add 'app' and 'skin' directory to you magento
     - Display cookies consent banner and popup
     - Compatible with magento google analytics (can be disabled)
     
-## Usage
+Usage
+------
 - Enable all feature who you want on 'System > Configuration > General > GDPR'
 - You can test download data or remove data from your customer dashboard
 
-## Password validation
-You must customize your theme if you want to enable the JS password validation.
-Follow these steps:
-1. Uncomment the `password-validation.js` inclusion in `app/design/frontend/base/default/layout/ph/gdpr.xml`
-2. In your theme's register template, replace the `validate-password` class by `validate-gdpr-password`. Usually, you should have `customer/form/register.phtml` and `checkout/onepage/billing.phtml`.
+Documentation
+-------
+[Module documentation](https://github.com/PH2M/GDPR/wiki/Documentation).
 
-## Developer guide
-#### ADD Custom process before / after customer download or remove data
-- Download event:
-```
-request_customer_data_download_before [customer, customer_email]
-```
-call before delete customer data, or add download action in queue
+[Developer documentation](https://github.com/PH2M/GDPR/wiki/Developer-guide).
 
-```
-request_customer_data_download_after [customer, customer_email]
-```
-call after delete customer data, or add download action in queue
-
-```
-customer_data_download_construct_data_before [customer, fileData]
-```
-call before construct file data, you can add your custom data on fileData Varien_Object
-
-```
-customer_data_download_construct_data_after [customer, fileData]
-```
-call after construct file data, you can update or remove data already in Varien_Object
-
-- Remove event:
-
-```
-request_customer_data_remove_before [customer, customer_email]
-```
-call just before delete customer data, or remove action in queue
-
-```
-request_customer_data_remove_after [customer, customer_email]
-```
-call just after delete customer data, or remove action in queue
-
-```
-customer_data_remove_action_before [customer, customer_email]
-```
-call before customer data remove action
-
-```
-customer_data_remove_action_after [customer, customer_email]
-```
-call after customer data remove action
-
-#### ADD Custom process with queue system
-You can add your own custom process thanks to the queue system. for this, follow this step :
-1. create your own model, you need to implement `PH2M_Gdpr_Model_Interface` interface.
-2. add your process to queue tab, you need to specified (use `Mage::getModel('phgdpr/queue')->addEntity()`:
- - entity_type (is the name of your class, look `PH2M_Gdpr_Model_Queue_Entitytype` for example)
- - params (you can add all info you want to get for you process)
- - run_date (date when you want run your process, keep empty for run at the next queue running)
-
-## Licence
+Licence
+-------
 GNU General Public License, version 3 (GPLv3)
 
-## Mini-help for contribution
-Auto-generate modman with https://github.com/mhauri/generate-modman:
+Mini-help for contribution
+--------
+Auto-generate [modman](https://github.com/mhauri/generate-modman)
 ```
 make modman
 ```
 
-## Configuration recommended (With magerun)
+Configuration recommended (with [magerun](https://github.com/netz98/n98-magerun))
+--------
 ```
 magerun config:set  "phgdpr/fonctionality/password_format_validation" "1"
 magerun config:set  "phgdpr/fonctionality/login_limit_attempts" "1"

@@ -179,14 +179,12 @@
             <customer_data_remove>
                 <confirm_email_template>phgdpr_customer_data_remove_confirm_email_template</confirm_email_template>
                 <email_sender_identity>general</email_sender_identity>
-                <lock_account_message>
-                    <![CDATA[This account will be removed soon, during this process you can log to this account]]></lock_account_message>
+                <lock_account_message><![CDATA[This account will be removed soon, during this process you can log to this account]]></lock_account_message>
             </customer_data_remove>
             <customer_data_download>
                 <email_template>phgdpr_customer_data_download_email_template</email_template>
                 <email_sender_identity>general</email_sender_identity>
-                <queue_processing_message>
-                    <![CDATA[We received your request, and we send you your data soon by email.]]></queue_processing_message>
+                <queue_processing_message><![CDATA[We received your request, and we send you your data soon by email.]]></queue_processing_message>
             </customer_data_download>
         </phgdpr>
     </default>

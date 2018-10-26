@@ -38,6 +38,8 @@ Init module :
 ==== 1.1.3 ====
 
 - [Fix] Improve password validation UX #10
+- [Fix] When shipping address is null (e.g. virtual products) there is an error
 - [Update] Check validity rules system
+- [Update] Add php_codesniffer to composer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
