@@ -60,12 +60,12 @@
     </default>
     <customer_account>
         <reference name="customer_account_navigation">
-            <action method="addLink" ifconfig="phgdpr/customer_data_remove/enable" condition="1">
+            <action method="addLink" translate="label" ifconfig="phgdpr/customer_data_remove/enable" condition="1">
                 <name>delete</name>
                 <path>phgdpr/customer/deleteconfirmation</path>
                 <label>Delete my account</label>
             </action>
-            <action method="addLink" ifconfig="phgdpr/customer_data_download/enable" condition="1">
+            <action method="addLink" translate="label" ifconfig="phgdpr/customer_data_download/enable" condition="1">
                 <name>download</name>
                 <path>phgdpr/customer/downloadview</path>
                 <label>Download my account data</label>
