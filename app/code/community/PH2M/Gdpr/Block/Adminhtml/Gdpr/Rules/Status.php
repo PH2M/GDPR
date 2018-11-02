@@ -15,7 +15,7 @@
  *
  */
 
-class PH2M_Gdpr_Block_Adminhtml_Gdpr_Status extends Mage_Core_Block_Template
+class PH2M_Gdpr_Block_Adminhtml_Gdpr_Rules_Status extends Mage_Core_Block_Template
 {
     /**
      * Constructor. Set template.
@@ -23,7 +23,7 @@ class PH2M_Gdpr_Block_Adminhtml_Gdpr_Status extends Mage_Core_Block_Template
     protected function _construct()
     {
         parent::_construct();
-        $this->setTemplate('ph/gdpr/system/config/status.phtml');
+        $this->setTemplate('ph/gdpr/system/config/rules/status.phtml');
     }
 
 
@@ -38,8 +38,6 @@ class PH2M_Gdpr_Block_Adminhtml_Gdpr_Status extends Mage_Core_Block_Template
         $config = Mage::getStoreConfig($config);
         if ($config == PH2M_Gdpr_Model_System_Config_Source_Rulesvalidity::NO_VALID) {
             return 'bad';
-        } elseif ($config == PH2M_Gdpr_Model_System_Config_Source_Rulesvalidity::WAIT_MANUAL_VALIDATION) {
-            return 'wait';
         }
         return 'good';
     }

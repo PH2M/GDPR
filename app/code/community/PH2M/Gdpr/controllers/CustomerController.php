@@ -69,7 +69,7 @@ class PH2M_Gdpr_CustomerController extends Mage_Core_Controller_Front_Action
 
         if (file_exists($file)) {
             $data = file_get_contents($file);
-            return $this->_prepareDownloadResponse('customer-information.json', $data);
+            return $this->_prepareDownloadResponse('customer-information.txt', $data);
         }
         Mage::getSingleton('core/session')->addError(Mage::helper('phgdpr')->__('Sorry, but this file does not exist'));
         return $this->_redirectReferer();
@@ -136,7 +136,7 @@ class PH2M_Gdpr_CustomerController extends Mage_Core_Controller_Front_Action
         $data = Mage::getModel('phgdpr/customer_data_download')->requestRetrieveCustomerData($customer);
 
         if (!Mage::getStoreConfig('phgdpr/customer_data_download/download_action_in_queue')) {
-            $this->_prepareDownloadResponse('customer-information.json', $data);
+            $this->_prepareDownloadResponse('customer-information.txt', $data);
         } else {
             Mage::getSingleton('core/session')->addSuccess(Mage::getStoreConfig('phgdpr/customer_data_download/queue_processing_message'));
             $this->_redirectReferer();

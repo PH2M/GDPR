@@ -91,11 +91,6 @@
     </global>
     <crontab>
         <jobs>
-            <phgdpr_check_rules>
-                <run>
-                    <model>phgdpr/observer::checkRulesValidity</model>
-                </run>
-            </phgdpr_check_rules>
             <phgdpr_queue_runner>
                 <run>
                     <model>phgdpr/observer::runQueueRunner</model>
@@ -160,6 +155,24 @@
                 </PH2M_Gdpr>
             </modules>
         </translate>
+        <events>
+            <admin_system_config_changed_section_newsletter>
+                <observers>
+                    <bind_locale>
+                        <class>phgdpr/observer</class>
+                        <method>checkRulesValidity</method>
+                    </bind_locale>
+                </observers>
+            </admin_system_config_changed_section_newsletter>
+            <admin_system_config_changed_section_phgdpr>
+                <observers>
+                    <bind_locale>
+                        <class>phgdpr/observer</class>
+                        <method>checkRulesValidity</method>
+                    </bind_locale>
+                </observers>
+            </admin_system_config_changed_section_phgdpr>
+        </events>
     </adminhtml>
     <default>
         <phgdpr>

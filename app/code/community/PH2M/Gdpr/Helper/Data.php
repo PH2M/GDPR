@@ -100,7 +100,7 @@ class PH2M_Gdpr_Helper_Data extends Mage_Core_Helper_Abstract
     public function getCustomerDataFile($customerId)
     {
         $directory  =  Mage::getBaseDir('var') . DS . 'phgdpr';
-        $file       = $directory . DS . 'customer-data-file-' . $customerId . '.json';
+        $file       = $directory . DS . 'customer-data-file-' . $customerId . '.txt';
 
         return $file;
     }

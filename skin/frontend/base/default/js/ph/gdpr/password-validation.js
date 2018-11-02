@@ -1,8 +1,6 @@
 Validation.addAllThese([
-    ['validate-password', 'Please enter valid password, with 3 or more than options, numeric, lowercase, uppercase, special character and 8 or more characters.', function(v) {
-        // TODO : need to be compatible with bad format if account already created (login form for example)
-        return true;
-        var pass        = v.strip(); /*strip leading and trailing spaces*/
+    ['validate-gdpr-password', 'Your password must respect at least 3 of the following conditions: one capital letter, one lowercase letter, one number, one special character and contains at least 8 characters.', function(v) {
+        var pass        = v.strip();
         var errorCount  = 0;
         if(pass.length < 8 || pass.length > 30) {
             return false;
