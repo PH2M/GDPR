@@ -5,7 +5,7 @@
 "Customer status","Statut client"
 "Newsletter status","Statut newsletter"
 "Complex password (Cnil)","Mot de passe complexe (Cnil)"
-"Password reset","Reset du mot de passe"
+"Customer password reset","Réinitialisation du mot de passe du client"
 "Secure multi try log in","Sécuriser les multiples tentatives de connexion"
 "Remove account request","Demande de suppression de compte"
 "Download own information","Téléchargement de ses données"
@@ -60,12 +60,15 @@
 "Wording personalize button","Libellé du bouton personnaliser"
 "Enable Google Analytics service","Activer le service Google Analytics"
 "Attempts number","Nombre de tentative"
-"default value, 5 try","valeur par défault, 5 tentatives"
+"default value, 5 try","valeur par défaut, 5 tentatives"
 "Time blocked","Temps de blocage"
 "in minutes, default value 5 minutes","En minutes, valeur par défaut 5 minutes"
 "GDPR rules validity","Validité des règles RGDP"
 "How this module work ?","Comment le module fonctionne ?"
 "See documentation","Voir la documentation"
+"Delay before remove customer data", "Durée avant la suppression des données par le système de queue"
+"Account deleted queue pending message", "Message d'attente de suppression du compte par le système de queue"
+"Email download template", "Email de téléchargement"
 #############
 ### FRONT ###
 #############
