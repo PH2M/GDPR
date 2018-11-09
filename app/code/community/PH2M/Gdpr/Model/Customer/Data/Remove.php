@@ -264,9 +264,13 @@ class PH2M_Gdpr_Model_Customer_Data_Remove extends Mage_Core_Model_Abstract impl
      * anonymize customer details from the address
      *
      * @param Mage_Sales_Model_Order_Address|Mage_Sales_Model_Quote_Address $address
+     * @return bool
      */
     protected function anonymizeSaleAddress($address)
     {
+        if (empty($address)) {
+            return false;
+        }
         $helper = Mage::helper('phgdpr');
         $address->setFirstname($helper->getRandom());
         $address->setMiddlename($helper->getRandom());
@@ -279,6 +283,7 @@ class PH2M_Gdpr_Model_Customer_Data_Remove extends Mage_Core_Model_Abstract impl
         $address->setPostcode($helper->getRandom());
         $address->setTelephone($helper->getRandom());
         $address->setFax($helper->getRandom());
+        return true;
     }
 
     /**

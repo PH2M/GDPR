@@ -15,8 +15,12 @@
  *
  */
 
+/**
+ * Class PH2M_Gdpr_Helper_Password
+ */
 class PH2M_Gdpr_Helper_Password
 {
+    const MIN_PASSWORD_LENGTH = 8;
 
     /**
      * Check if the password is valid for gdpr
@@ -27,8 +31,8 @@ class PH2M_Gdpr_Helper_Password
     public function invalidPasswordFormat($password)
     {
         $errorCount = 1;
-        if (strlen($password) < '8') {
-            return Mage::helper('phgdpr')->__('Your password must contain at least 8 characters.');
+        if (strlen($password) < self::MIN_PASSWORD_LENGTH) {
+            return Mage::helper('phgdpr')->__('Your password must contain at least %s characters.', self::MIN_PASSWORD_LENGTH);
         }
         if (!preg_match("#[0-9]+#", $password)) {
             $errorCount++;
@@ -44,7 +48,7 @@ class PH2M_Gdpr_Helper_Password
         }
 
         if ($errorCount >= 3) {
-            return Mage::helper('phgdpr')->__('Please enter valid password, with 3 or more than options, numeric, lowercase, uppercase, special character');
+            return Mage::helper('phgdpr')->__('Your password must respect at least 3 of the following conditions: one capital letter, one lowercase letter, one number, one special character and contains at least 8 characters.');
         }
         return false;
     }

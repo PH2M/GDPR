@@ -16,70 +16,15 @@
  */
 class PH2M_Gdpr_Model_Observer
 {
-    protected $configModel;
     const EXCEPTION_ACCOUNT_GDPR_LOCK = 20;
     const DEFAULT_ATTEMPS_NUMBER      = 5;
     const DEFAULT_TIME_BLOCKED        = 5;
 
 
-    /**
-     * Check if all config for respect GDPR is enabled
-     */
-    public function checkRulesValidity()
+    public function checkRulesValidity(Varien_Event_Observer $observer)
     {
-        $this->configModel = Mage::getConfig();
-        $this->checkNewsletterDoubleOptIn();
-        $this->checkPasswordFormatValidation();
-        $this->checkLoginLimitAttempts();
-        $this->checkCustomerCanRemoveData();
-        $this->checkCustomerCanDownloadData();
+        Mage::getModel('phgdpr/rules_validity')->checkRulesValidity();
     }
-
-    protected function checkCustomerCanRemoveData()
-    {
-        if (Mage::getStoreConfig('phgdpr/customer_data_remove/enable')) {
-            $this->configModel->saveConfig('phgdpr/valid_rules/customer_data_remove', PH2M_Gdpr_Model_System_Config_Source_Rulesvalidity::WAIT_MANUAL_VALIDATION, 'default', 0);
-        } else {
-            $this->configModel->saveConfig('phgdpr/valid_rules/customer_data_remove', PH2M_Gdpr_Model_System_Config_Source_Rulesvalidity::NO_VALID, 'default', 0);
-        }
-    }
-
-    protected function checkCustomerCanDownloadData()
-    {
-        if (Mage::getStoreConfig('phgdpr/customer_data_download/enable')) {
-            $this->configModel->saveConfig('phgdpr/valid_rules/customer_download_own_information', PH2M_Gdpr_Model_System_Config_Source_Rulesvalidity::WAIT_MANUAL_VALIDATION, 'default', 0);
-        } else {
-            $this->configModel->saveConfig('phgdpr/valid_rules/customer_download_own_information', PH2M_Gdpr_Model_System_Config_Source_Rulesvalidity::NO_VALID, 'default', 0);
-        }
-    }
-
-    protected function checkNewsletterDoubleOptIn()
-    {
-        if (Mage::getStoreConfig('newsletter/subscription/confirm')) {
-            $this->configModel->saveConfig('phgdpr/valid_rules/newsletter_double_optin', PH2M_Gdpr_Model_System_Config_Source_Rulesvalidity::WAIT_MANUAL_VALIDATION, 'default', 0);
-        } else {
-            $this->configModel->saveConfig('phgdpr/valid_rules/newsletter_double_optin', PH2M_Gdpr_Model_System_Config_Source_Rulesvalidity::NO_VALID, 'default', 0);
-        }
-    }
-
-    protected function checkPasswordFormatValidation()
-    {
-        if (Mage::getStoreConfig('phgdpr/fonctionality/password_format_validation')) {
-            $this->configModel->saveConfig('phgdpr/valid_rules/customer_complex_password', PH2M_Gdpr_Model_System_Config_Source_Rulesvalidity::WAIT_MANUAL_VALIDATION, 'default', 0);
-        } else {
-            $this->configModel->saveConfig('phgdpr/valid_rules/customer_complex_password', PH2M_Gdpr_Model_System_Config_Source_Rulesvalidity::NO_VALID, 'default', 0);
-        }
-    }
-
-    protected function checkLoginLimitAttempts()
-    {
-        if (Mage::getStoreConfig('phgdpr/fonctionality/login_limit_attempts')) {
-            $this->configModel->saveConfig('phgdpr/valid_rules/customer_login_limit_attempts', PH2M_Gdpr_Model_System_Config_Source_Rulesvalidity::WAIT_MANUAL_VALIDATION, 'default', 0);
-        } else {
-            $this->configModel->saveConfig('phgdpr/valid_rules/customer_login_limit_attempts', PH2M_Gdpr_Model_System_Config_Source_Rulesvalidity::NO_VALID, 'default', 0);
-        }
-    }
-
 
     /**
      * If customer try to login too many time during 30 seconds,

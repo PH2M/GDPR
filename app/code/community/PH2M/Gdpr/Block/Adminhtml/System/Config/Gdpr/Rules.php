@@ -15,12 +15,16 @@
  *
  */
 
-class PH2M_Gdpr_Block_Adminhtml_System_Config_Gdpr_Status extends Mage_Adminhtml_Block_System_Config_Form_Fieldset
+class PH2M_Gdpr_Block_Adminhtml_System_Config_Gdpr_Rules extends Mage_Adminhtml_Block_System_Config_Form_Fieldset
 {
+    /**
+     * @param Varien_Data_Form_Element_Abstract $element
+     * @return string
+     */
     public function render(Varien_Data_Form_Element_Abstract $element)
     {
-        $html = Mage::getBlockSingleton('phgdpr/adminhtml_gdpr_status')->toHtml();
+        $status = Mage::getBlockSingleton('phgdpr/adminhtml_gdpr_rules_status')->toHtml();
 
-        return $html;
+        return $status;
     }
 }
