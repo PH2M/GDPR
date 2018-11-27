@@ -18,6 +18,10 @@
 
 ?>
 <script>
+
+    <?php $locale = Mage::app()->getLocale()->getLocaleCode(); ?>
+    var tarteaucitronForceLanguage = '<?php echo substr($locale, 0, 2); ?>';
+
     tarteaucitron.init({
         "privacyUrl": "<?php echo $this->getPrivacyPageUrl() ?>", /* Privacy policy url */
 
