@@ -1,6 +1,5 @@
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/SASAICAGENCY) [![](https://data.jsdelivr.com/v1/package/gh/AmauriC/tarteaucitron.js/badge)](https://www.jsdelivr.com/package/gh/AmauriC/tarteaucitron.js)
-
-
+[![](https://data.jsdelivr.com/v1/package/gh/AmauriC/tarteaucitron.js/badge)](https://www.jsdelivr.com/package/gh/AmauriC/tarteaucitron.js) 
+[![npm](https://img.shields.io/npm/v/tarteaucitronjs.svg)](https://www.npmjs.com/package/tarteaucitronjs) [![GitHub contributors](https://img.shields.io/github/contributors/AmauriC/tarteaucitron.js.svg)](https://github.com/AmauriC/tarteaucitron.js/graphs/contributors)
 
 tarteaucitron.js
 ================
@@ -44,10 +43,11 @@ tarteaucitron.init({
     "adblocker": false, /* Show a Warning if an adblocker is detected */
     "AcceptAllCta" : true, /* Show the accept all button when highPrivacy on */
     "highPrivacy": false, /* Disable auto consent */
-    "handleBrowserDNTRequest": false, /* If Do Not Track == 1, accept all */
+    "handleBrowserDNTRequest": false, /* If Do Not Track == 1, disallow all */
 
     "removeCredit": false, /* Remove credit link */
     "moreInfoLink": true, /* Show more info link */
+    "useExternalCss": false /* If false, the tarteaucitron.css file will be loaded */
 
     //"cookieDomain": ".my-multisite-domaine.fr" /* Shared cookie for subdomain website */
 });
