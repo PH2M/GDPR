@@ -21,17 +21,17 @@
         <reference name="head">
             <!-- Uncomment these lines to enable JS password validation (see developer documentation) -->
             <!--<action method="addItem" ifconfig="phgdpr/fonctionality/password_format_validation" condition="1">-->
-                <!--<type>skin_js</type>-->
-                <!--<file>js/ph/gdpr/password-validation.js</file>-->
+            <!--<type>skin_js</type>-->
+            <!--<file>js/ph/gdpr/password-validation.js</file>-->
             <!--</action>-->
             <action method="addItem" ifconfig="phgdpr/cookies/enable" condition="1">
                 <type>skin_js</type>
-                <file>js/ph/gdpr/tarteaucitron/tarteaucitron.js</file>
+                <name>js/ph/gdpr/tarteaucitron/tarteaucitron.js</name>
             </action>
 
             <action method="addItem" ifconfig="phgdpr/cookies/enable" condition="1">
                 <type>skin_css</type>
-                <file>js/ph/gdpr/tarteaucitron-custom.css</file>
+                <name>js/ph/gdpr/tarteaucitron-custom.css</name>
             </action>
 
             <!-- [COOKIES] Google Analitycs -->
