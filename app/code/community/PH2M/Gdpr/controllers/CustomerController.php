@@ -106,12 +106,14 @@ class PH2M_Gdpr_CustomerController extends Mage_Core_Controller_Front_Action
 
         Mage::getModel('phgdpr/customer_data_remove')->requestDeleteCustomerData($customer);
 
-        Mage::getSingleton('customer/session')->logout();
+        $session = Mage::getSingleton('customer/session');
+        $session->logout();
+        $session->renewSession();
         if (!Mage::getStoreConfig('phgdpr/customer_data_remove/remove_action_in_queue')) {
-            Mage::getSingleton('core/session')->clear();
-            Mage::getSingleton('core/session')->addSuccess(Mage::getStoreConfig(('phgdpr/customer_data_remove/account_delete_success_message')));
+            $session->addSuccess(Mage::getStoreConfig(('phgdpr/customer_data_remove/account_delete_success_message')));
+        } else {
+            $session->addSuccess(Mage::getStoreConfig(('phgdpr/customer_data_remove/account_delete_queue_pending_message')));
         }
-        Mage::getSingleton('core/session')->addSuccess(Mage::getStoreConfig(('phgdpr/customer_data_remove/account_delete_queue_pending_message')));
         return $this->_redirectReferer();
     }
 

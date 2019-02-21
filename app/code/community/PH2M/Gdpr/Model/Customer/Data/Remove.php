@@ -53,6 +53,7 @@ class PH2M_Gdpr_Model_Customer_Data_Remove extends Mage_Core_Model_Abstract impl
             if (Mage::getStoreConfig('phgdpr/customer_data_remove/enable_remove_from_newsletter')) {
                 $subscriber = Mage::getModel('newsletter/subscriber')->loadByEmail($customerEmail);
                 if ($subscriber->getId()) {
+                    $subscriber->setImportMode(true);
                     $subscriber->unsubscribe();
                 }
             }
@@ -126,9 +127,13 @@ class PH2M_Gdpr_Model_Customer_Data_Remove extends Mage_Core_Model_Abstract impl
         }
         try {
             // Disable Secure area for force customer delete from front area
-            Mage::register('isSecureArea', true);
-            $customer->delete();
-            Mage::register('isSecureArea', false);
+            if (!Mage::registry('isSecureArea')) {
+                Mage::register('isSecureArea', true);
+                $customer->delete();
+                Mage::unregister('isSecureArea');
+            } else {
+                $customer->delete();
+            }
         } catch (Exception $e) {
             Mage::logException($e);
             Mage::helper('phgdpr')->log($e->getMessage(), Zend_Log::ERR);
@@ -170,6 +175,7 @@ class PH2M_Gdpr_Model_Customer_Data_Remove extends Mage_Core_Model_Abstract impl
         $subscriber = Mage::getModel('newsletter/subscriber')->loadByEmail($customerEmail);
         if ($subscriber->getId()) {
             try {
+                $subscriber->setImportMode(true);
                 $subscriber->unsubscribe();
                 $subscriber->delete();
             } catch (Exception $e) {

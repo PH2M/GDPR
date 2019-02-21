@@ -91,7 +91,9 @@ class PH2M_Gdpr_Model_Observer
         }
         foreach ($entities as $entity) {
             $action = Mage::getModel($entity->getEntityType());
-            if ($action) {
+            $action->setRun(true);
+            Mage::dispatchEvent('gdpr_queue_run_before', ['action' => $action, 'entity' => $entity]);
+            if ($action && ($action->getRun() == true)) {
                 try {
                     $action->run($entity->getParams());
                     $entity->delete();
