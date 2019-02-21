@@ -78,12 +78,12 @@
             <email>
                 <phgdpr_customer_data_remove_confirm_email_template translate="label" module="phgdpr">
                     <label>Customer remove data</label>
-                    <file>ph/gdpr/customer_remove_confirm.html</file>
+                    <file>ph/gdpr/account_deleted_email_template.html</file>
                     <type>html</type>
                 </phgdpr_customer_data_remove_confirm_email_template>
                 <phgdpr_customer_data_download_email_template translate="label" module="phgdpr">
                     <label>Customer download data</label>
-                    <file>ph/gdpr/customer_data_download.html</file>
+                    <file>ph/gdpr/account_download_email_template.html</file>
                     <type>html</type>
                 </phgdpr_customer_data_download_email_template>
             </email>
@@ -93,6 +93,9 @@
         <jobs>
             <phgdpr_queue_runner>
                 <run>
+                    <schedule>
+                        <cron_expr>*/30 * * * *</cron_expr>
+                    </schedule>
                     <model>phgdpr/observer::runQueueRunner</model>
                 </run>
             </phgdpr_queue_runner>
