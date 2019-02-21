@@ -35,7 +35,7 @@ class PH2M_Gdpr_Model_Override_Customer_Customer extends Mage_Customer_Model_Cus
      */
     public function validate()
     {
-        $errors = array();
+        $errors = [];
         if (!Zend_Validate::is(trim($this->getFirstname()), 'NotEmpty')) {
             $errors[] = Mage::helper('customer')->__('The first name cannot be empty.');
         }
