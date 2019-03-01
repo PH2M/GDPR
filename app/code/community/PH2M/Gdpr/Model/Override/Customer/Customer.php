@@ -26,6 +26,12 @@ class PH2M_Gdpr_Model_Override_Customer_Customer extends Mage_Customer_Model_Cus
 
 
     /**
+     * Minimum Password Length for GDPR (CNIL recommendation)
+     */
+    const GDPR_MINIMUM_PASSWORD_LENGTH = 8;
+
+
+    /**
      * REWRITE : Add gdpr password verification
      *
      * Validate customer attribute values.
@@ -56,13 +62,11 @@ class PH2M_Gdpr_Model_Override_Customer_Customer extends Mage_Customer_Model_Cus
 			if (!$this->getId() && !Zend_Validate::is($password , 'NotEmpty')) {
 				$errors[] = Mage::helper('customer')->__('The password cannot be empty.');
 			}
-			if (strlen($password) && !Zend_Validate::is($password, 'StringLength', array(self::MINIMUM_PASSWORD_LENGTH))) {
-				$errors[] = Mage::helper('customer')
-					->__('The minimum password length is %s', self::MINIMUM_PASSWORD_LENGTH);
+			if (strlen($password) && !Zend_Validate::is($password, 'StringLength', [self::GDPR_MINIMUM_PASSWORD_LENGTH])) {
+				$errors[] = Mage::helper('customer')->__('The minimum password length is %s', self::GDPR_MINIMUM_PASSWORD_LENGTH);
 			}
-			if (strlen($password) && !Zend_Validate::is($password, 'StringLength', array('max' => self::MAXIMUM_PASSWORD_LENGTH))) {
-				$errors[] = Mage::helper('customer')
-					->__('Please enter a password with at most %s characters.', self::MAXIMUM_PASSWORD_LENGTH);
+			if (strlen($password) && !Zend_Validate::is($password, 'StringLength', ['max' => self::MAXIMUM_PASSWORD_LENGTH])) {
+				$errors[] = Mage::helper('customer')->__('Please enter a password with at most %s characters.', self::MAXIMUM_PASSWORD_LENGTH);
 			}
         } else {
             if (!$this->getId() && strlen($password) && $errorPassword = Mage::helper('phgdpr/password')->invalidPasswordFormat($password)) {

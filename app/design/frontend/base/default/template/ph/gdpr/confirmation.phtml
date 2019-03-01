@@ -22,6 +22,7 @@
 
 <div>
     <form action="<?php echo Mage::helper('phgdpr')->getRemoveCustomerAccountUrl() ?>" method="POST">
+        <p class="information-text"><?php echo Mage::getStoreConfig('phgdpr/customer_data_remove/description_for_customer') ?></p>
         <?php if(Mage::getStoreConfig('phgdpr/customer_data_remove/enable_password_confirmation_for_delete')): ?>
             <label for="password"><?php echo $this->__('Enter your password for remove your account') ?></label>
             <input type="password" name="password" id="password" required>

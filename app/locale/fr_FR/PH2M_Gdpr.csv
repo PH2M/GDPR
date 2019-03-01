@@ -70,6 +70,8 @@
 "Delay before remove customer data", "Durée avant la suppression des données par le système de queue"
 "Account deleted queue pending message", "Message d'attente de suppression du compte par le système de queue"
 "Email download template", "Email de téléchargement"
+"Description text for customer","Texte de description pour le client"
+"display on delete account page","affiché sur la page de supression du compte"
 #############
 ### FRONT ###
 #############
