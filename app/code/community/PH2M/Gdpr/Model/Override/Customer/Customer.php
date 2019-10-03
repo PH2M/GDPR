@@ -54,9 +54,11 @@ class PH2M_Gdpr_Model_Override_Customer_Customer extends Mage_Customer_Model_Cus
             $errors[] = Mage::helper('customer')->__('Invalid email address "%s".', $this->getEmail());
         }
 
-        $password = $this->getPassword();
-
+        $password           = $this->getPassword();
         // START REWRITE
+
+        // Check if const is defined for support old Magento version
+        $maxPasswordLength  = defined('static::MAXIMUM_PASSWORD_LENGTH') ? static::MAXIMUM_PASSWORD_LENGTH : 256;
         // IF password format for gdpr is disable, use magento basic check
         if (!Mage::helper('phgdpr/password')->isPasswordGdprValidationEnabled()) {
 			if (!$this->getId() && !Zend_Validate::is($password , 'NotEmpty')) {
@@ -65,8 +67,8 @@ class PH2M_Gdpr_Model_Override_Customer_Customer extends Mage_Customer_Model_Cus
 			if (strlen($password) && !Zend_Validate::is($password, 'StringLength', [self::GDPR_MINIMUM_PASSWORD_LENGTH])) {
 				$errors[] = Mage::helper('customer')->__('The minimum password length is %s', self::GDPR_MINIMUM_PASSWORD_LENGTH);
 			}
-			if (strlen($password) && !Zend_Validate::is($password, 'StringLength', ['max' => self::MAXIMUM_PASSWORD_LENGTH])) {
-				$errors[] = Mage::helper('customer')->__('Please enter a password with at most %s characters.', self::MAXIMUM_PASSWORD_LENGTH);
+			if (strlen($password) && !Zend_Validate::is($password, 'StringLength', ['max' => $maxPasswordLength])) {
+				$errors[] = Mage::helper('customer')->__('Please enter a password with at most %s characters.', $maxPasswordLength);
 			}
         } else {
             if (!$this->getId() && strlen($password) && $errorPassword = Mage::helper('phgdpr/password')->invalidPasswordFormat($password)) {
