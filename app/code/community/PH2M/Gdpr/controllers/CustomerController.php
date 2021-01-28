@@ -92,13 +92,8 @@ class PH2M_Gdpr_CustomerController extends Mage_Core_Controller_Front_Action
         }
         if (Mage::getStoreConfig('phgdpr/customer_data_remove/enable_password_confirmation_for_delete')) {
             $passwordConfirmation   = $this->getRequest()->getParam('password');
-            $hash                   = $customer->getPasswordHash();
-            $hashPassword           = explode(':', $hash);
-            $firstPart              = $hashPassword[0];
-            $salt                   = $hashPassword[1];
-            $current_password       = md5($salt . $passwordConfirmation);
 
-            if ($current_password != $firstPart) {
+            if (!$customer->validatePassword($passwordConfirmation)) {
                 Mage::getSingleton('core/session')->addError(Mage::helper('phgdpr')->__('Invalid password'));
                 return $this->_redirectReferer();
             }
