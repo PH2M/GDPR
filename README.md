@@ -44,9 +44,9 @@ Feature
     - Download customer addresses data (you can choose attributes to export)
     - Download customer orders data (you can choose attributes to export)
     - Donwload customer product reviews
-- Manage cookies (with [tarteaucitron.js](https://github.com/AmauriC/tarteaucitron.js))
-    - Display cookies consent banner and popup
-    - Compatible with magento google analytics (can be disabled)
+- BROKEN ~~Manage cookies (with [tarteaucitron.js](https://github.com/AmauriC/tarteaucitron.js))~~ prefer use external service like axeptio
+    - ~~Display cookies consent banner and popup~~
+    - ~~Compatible with magento google analytics (can be disabled)~~
     
 Usage
 ------
