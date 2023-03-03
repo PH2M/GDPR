@@ -34,8 +34,8 @@
                 <name>js/ph/gdpr/tarteaucitron-custom.css</name>
             </action>
 
-            <!-- [COOKIES] Google Analitycs -->
-            <action method="unsetChild" ifconfig="phgdpr/cookies/enable_google_analitycs" condition="1">
+            <!-- [COOKIES] Google Analytics -->
+            <action method="unsetChild" ifconfig="phgdpr/cookies/enable_google_analytics" condition="1">
                 <child>google_analytics</child>
             </action>
         </reference>
@@ -47,14 +47,14 @@
                 <block>cookie.config</block>
             </action>
         </reference>
-        <!-- [COOKIES] Google Analitycs -->
+        <!-- [COOKIES] Google Analytics -->
         <block type="googleanalytics/ga" name="cookie.config.ga.universal" template="ph/gdpr/tarteaucitron/config/ga.phtml" />
         <reference name="cookie.config">
-            <action method="append" ifconfig="phgdpr/cookies/enable_google_analitycs" condition="1">
+            <action method="append" ifconfig="phgdpr/cookies/enable_google_analytics" condition="1">
                 <block>cookie.config.ga.universal</block>
             </action>
         </reference>
-        <action method="remove" ifconfig="phgdpr/cookies/enable_google_analitycs" condition="1">
+        <action method="remove" ifconfig="phgdpr/cookies/enable_google_analytics" condition="1">
             <block>cookie.config.ga.universal</block>
         </action>
     </default>
