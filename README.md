@@ -2,7 +2,7 @@ GDPR Module for Magento 1
 ==================
 Free Magento 1 module for respect reform of EU data protection rules (GDPR)
 
-![Latest version](https://img.shields.io/badge/latest-v1.1.7-green.svg)
+![Latest version](https://img.shields.io/badge/latest-v1.1.8-green.svg)
 ![PHP >= 5.3](https://img.shields.io/badge/php-%3E=5.3-green.svg)
 ![Magento 1.9.3](https://img.shields.io/badge/magento-1.9.3-blue.svg)
 
